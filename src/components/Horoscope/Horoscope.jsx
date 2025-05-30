@@ -27,7 +27,8 @@ const Horoscope = ({ sign }) => {
 useEffect(() => {
   if (!sign) return;
 
-  fetch("/public/horoscopes-new.json")
+fetch("/horoscopes-new.json")
+
     .then((response) => response.json())
     .then((data) => {
       console.log("Fetched Horoscope Data:", data);
@@ -53,33 +54,6 @@ useEffect(() => {
 }, [sign]);
 
 
-  // useEffect(() => {
-  //   if (!sign) return;
-
-  //   fetch(`/horoscopes.json?timestamp=${new Date().getTime()}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Fetched Horoscope Data:", data);
-
-  //       const cleanText = (text) => (text ? text.trim() : "Not available");
-
-  //       setHoroscope({
-  //         daily: {
-  //           summary: cleanText(data[sign]?.daily?.summary),
-  //           ratings: data[sign]?.daily?.ratings || {},
-  //         },
-  //         monthly: {
-  //           overview: cleanText(data[sign]?.monthly?.overview),
-  //           key_dates: data[sign]?.monthly?.key_dates || [],
-  //         },
-  //         yearly: {
-  //           highlights: cleanText(data[sign]?.yearly?.highlights),
-  //           forecast: cleanText(data[sign]?.yearly?.forecast),
-  //         },
-  //       });
-  //     })
-  //     .catch((error) => console.error("Error fetching horoscope:", error));
-  // }, [sign]);
 
   return (
     <div className="horoscope-container">
