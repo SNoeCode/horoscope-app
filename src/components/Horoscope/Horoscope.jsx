@@ -27,7 +27,7 @@ const Horoscope = ({ sign }) => {
 useEffect(() => {
   if (!sign) return;
 
-  fetch("/api/horoscope")// Cache-busting query param
+  fetch("/public/horoscopes-new.json")
     .then((response) => response.json())
     .then((data) => {
       console.log("Fetched Horoscope Data:", data);
