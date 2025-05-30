@@ -1,0 +1,23 @@
+name: Daily Horoscope Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Commit updated horoscope JSON
+        run: |
+          git add public/horoscopes.json
+          git commit -m "Automated daily horoscope update"
+          git push origin main
