@@ -1,5 +1,23 @@
 {
+  "name": "horoscope-app",
+  "version": "1.0.0",
+  "description": "A Vite-powered astrology app",
+  "author": "Shanna Noe",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SNoeCode/horoscope-app.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite",
+    "lint": "eslint --fix ."
+  },
   "devDependencies": {
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.0",
+    "@vitejs/plugin-react-swc": "^3.8.1"
   }
 }
