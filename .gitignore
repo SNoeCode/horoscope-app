@@ -13,4 +13,4 @@ build/
 Thumbs.db
 
 # Ignore Vercel config
-.vercel/
+# .vercel/
