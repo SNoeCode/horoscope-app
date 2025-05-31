@@ -27,7 +27,7 @@ const Horoscope = ({ sign }) => {
 useEffect(() => {
   if (!sign) return;
 
-fetch("/horoscopes-new.json")
+fetch("/public/horoscopes-new.json")
 
     .then((response) => response.json())
     .then((data) => {

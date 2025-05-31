@@ -18,6 +18,6 @@ jobs:
 
       - name: Commit updated horoscope JSON
         run: |
-          git add public/horoscopes.json
+          git add public/horoscopes-new.json
           git commit -m "Automated daily horoscope update"
           git push origin main
