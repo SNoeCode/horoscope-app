@@ -1,4 +1,4 @@
-
+/* 
 .sign-buttons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -31,17 +31,17 @@
   text-align: center;
 }
 
-/* Center Horoscope Content */
+
 .horoscope-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers everything */
+  align-items: center; 
   text-align: center;
 }
 
-/* Bigger Font Sizes */
+
 h2 {
-  font-size: 2rem; /* Bigger heading */
+  font-size: 2rem; 
   font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ h3 {
 
 p {
   font-size: 1.2rem;
-  max-width: 700px; /* Prevents super-wide text */
+  max-width: 700px; 
 }
 
 .daily-section, .monthly-section, .yearly-section {
@@ -63,7 +63,7 @@ p {
   border: 1px solid #ccc;
 }
 
-/* Ensure Buttons Are Centered */
+
 .sign-buttons-grid {
   justify-content: center;
 }
@@ -91,4 +91,613 @@ p {
   background-color: #4A90E2;
   color: white;
   text-align: center;
+} */
+
+/* Updated Horoscope.css 
+.horoscope-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 40px 20px;
+}
+
+.horoscope-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.tab-buttons button {
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-buttons button:hover,
+.tab-buttons button.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.horoscope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.daily-section, 
+.monthly-section, 
+.yearly-section {
+  width: 100%;
+  max-width: 700px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.daily-section h3,
+.monthly-section h3,
+.yearly-section h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.daily-section p,
+.monthly-section p,
+.yearly-section p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.monthly-section ul {
+  text-align: left;
+  max-width: 500px;
+  margin: 20px auto 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.monthly-section li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  background: rgba(240, 147, 251, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #f093fb;
+}
+
+.yearly-section p strong {
+  color: #333;
+  font-weight: 700;
+}
+
+
+.sign-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 30px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-buttons-grid button {
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.sign-buttons-grid button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+
+@media (max-width: 768px) {
+  .horoscope-container {
+    padding: 30px 15px;
+  }
+  
+  .horoscope-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .tab-buttons {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .tab-buttons button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .daily-section, 
+  .monthly-section, 
+  .yearly-section {
+    padding: 30px 20px;
+  }
+  
+  .daily-section h3,
+  .monthly-section h3,
+  .yearly-section h3 {
+    font-size: 1.7rem;
+  }
+  
+  .daily-section p,
+  .monthly-section p,
+  .yearly-section p {
+    font-size: 1.1rem;
+  }
+  
+  .sign-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horoscope-title {
+    font-size: 2rem;
+  }
+  
+  .tab-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .tab-buttons button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    width: 200px;
+  }
+  
+  .daily-section, 
+  .monthly-section, 
+  .yearly-section {
+    padding: 25px 15px;
+  }
+  
+  .daily-section h3,
+  .monthly-section h3,
+  .yearly-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .daily-section p,
+  .monthly-section p,
+  .yearly-section p {
+    font-size: 1rem;
+  }
+  
+  .sign-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+
+/* Updated Horoscope.css */
+.horoscope-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 40px 20px;
+}
+
+.horoscope-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.tab-buttons button {
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-buttons button:hover,
+.tab-buttons button.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.horoscope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.daily-section, 
+.monthly-section, 
+.yearly-section {
+  width: 100%;
+  max-width: 700px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.daily-section h3,
+.monthly-section h3,
+.yearly-section h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.daily-section p,
+.monthly-section p,
+.yearly-section p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.monthly-section ul {
+  text-align: left;
+  max-width: 500px;
+  margin: 20px auto 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.monthly-section li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  background: rgba(240, 147, 251, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #f093fb;
+}
+
+.yearly-section p strong {
+  color: #333;
+  font-weight: 700;
+}
+
+/* Loading and Error States */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  color: white;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retry-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-top: 15px;
+}
+
+.retry-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Ratings Section */
+.ratings-section {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(240, 147, 251, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(240, 147, 251, 0.2);
+}
+
+.ratings-section h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.rating-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rating-category {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.rating-value {
+  font-weight: bold;
+  color: #f093fb;
+  font-size: 1rem;
+}
+
+/* Enhanced Key Dates Section */
+.key-dates-section {
+  margin-top: 25px;
+}
+
+.key-dates-section h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Enhanced Yearly Content */
+.yearly-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.yearly-item {
+  text-align: left;
+}
+
+.yearly-item strong {
+  display: block;
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.yearly-item p {
+  margin: 0;
+  text-align: center;
+}
+.sign-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 30px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-buttons-grid button {
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.sign-buttons-grid button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .horoscope-container {
+    padding: 30px 15px;
+  }
+  
+  .horoscope-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .tab-buttons {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .tab-buttons button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .daily-section, 
+  .monthly-section, 
+  .yearly-section {
+    padding: 30px 20px;
+  }
+  
+  .daily-section h3,
+  .monthly-section h3,
+  .yearly-section h3 {
+    font-size: 1.7rem;
+  }
+  
+  .daily-section p,
+  .monthly-section p,
+  .yearly-section p {
+    font-size: 1.1rem;
+  }
+  
+  .sign-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horoscope-title {
+    font-size: 2rem;
+  }
+  
+  .tab-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .tab-buttons button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    width: 200px;
+  }
+  
+  .daily-section, 
+  .monthly-section, 
+  .yearly-section {
+    padding: 25px 15px;
+  }
+  
+  .daily-section h3,
+  .monthly-section h3,
+  .yearly-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .daily-section p,
+  .monthly-section p,
+  .yearly-section p {
+    font-size: 1rem;
+  }
+  
+  .sign-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }

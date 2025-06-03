@@ -12,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
     <Navbar/>
+<Horoscope/>
       <Routes>
         <Route path="/" element={<Home />} />
         {[

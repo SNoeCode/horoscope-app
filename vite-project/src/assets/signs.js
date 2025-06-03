@@ -1,21 +1,3 @@
-
-// const zodiacSymbols = {
-//   aquarius: "./assets/signs/AquaStars.svg",
-//   aries: "./assets/signs/AriesStars.svg",
-//   cancer: "./assets/signs/CancerStars.svg",
-//   capricorn: "./assets/signs/CapricornStars.svg",
-//   gemini: "./assets/signs/GeminiStars.svg",
-//   leo: "./assets/signs/LeoStars.svg",
-//   libra: "./assets/signs/LibraStars.svg",
-//   pisces: "./assets/signs/PiscesStars.svg",
-//   sagittarius: "./assets/signs/SagStars.svg",
-//   scorpio: "./assets/signs/ScorpioStars.svg",
-//   taurus: "./assets/signs/TaurusStars.svg",
-//   virgo: "./assets/signs/VirgoStars.svg",
-// };
-
-
-
 import AquaStars from "./signs/AquaStars.svg";
 import AriesStars from "./signs/AriesStars.svg";
 import CancerStars from "./signs/CancerStars.svg";
