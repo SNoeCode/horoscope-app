@@ -335,7 +335,27 @@ p {
 }
 
 
-/* Updated Horoscope.css */
+/* Updated Horoscope.css 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .horoscope-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -457,7 +477,7 @@ p {
   font-weight: 700;
 }
 
-/* Loading and Error States */
+/* Loading and Error States 
 .loading-container, .error-container {
   display: flex;
   flex-direction: column;
@@ -505,7 +525,7 @@ p {
   transform: translateY(-2px);
 }
 
-/* Enhanced Ratings Section */
+/* Enhanced Ratings Section 
 .ratings-section {
   margin-top: 25px;
   padding: 20px;
@@ -549,7 +569,7 @@ p {
   font-size: 1rem;
 }
 
-/* Enhanced Key Dates Section */
+
 .key-dates-section {
   margin-top: 25px;
 }
@@ -561,7 +581,6 @@ p {
   text-align: center;
 }
 
-/* Enhanced Yearly Content */
 .yearly-content {
   display: flex;
   flex-direction: column;
@@ -616,7 +635,7 @@ p {
   box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .horoscope-container {
     padding: 30px 15px;
@@ -700,4 +719,360 @@ p {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+}
+
+/* Horoscope.css - Horoscope Component Styles */
+.horoscope-container {
+  min-height: 100vh;
+  padding-top: 80px; /* Account for fixed navbar */
+  position: relative;
+}
+
+.horoscope-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Loading States */
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 2rem 3rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.2rem;
+  animation: fade-in 0.5s ease-out;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid #fbbf24;
+  animation: spin 1s linear infinite;
+}
+
+/* Header */
+.horoscope-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fade-in 1s ease-out;
+}
+
+.horoscope-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: bold;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #fbbf24);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+.loading-text {
+  color: rgba(196, 181, 253, 0.8);
+  font-size: 1rem;
+}
+
+/* Zodiac Selector */
+.zodiac-selector-section {
+  margin-bottom: 3rem;
+  animation: slide-up 0.8s ease-out 0.2s both;
+}
+
+.zodiac-selector {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.zodiac-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.zodiac-button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-weight: 500;
+  transform: scale(1);
+}
+
+.zodiac-button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.zodiac-button.active {
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
+  border-color: #fbbf24;
+  color: #1e1b4b;
+  font-weight: 600;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+}
+
+.zodiac-symbol-small {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.zodiac-name-small {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Horoscope Display */
+.horoscope-display {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: slide-up 0.5s ease-out;
+}
+
+/* Sign Header */
+.sign-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sign-symbol-large {
+  font-size: clamp(4rem, 10vw, 6rem);
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+.sign-name {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: bold;
+  color: #fbbf24;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+.sign-dates {
+  color: rgba(196, 181, 253, 0.9);
+  font-size: 1.1rem;
+  font-family: 'Georgia', serif;
+}
+
+/* Period Tabs */
+.period-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.period-tab {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: capitalize;
+  min-width: 100px;
+}
+
+.period-tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.period-tab.active {
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  border-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Reading Section */
+.reading-section {
+  margin-bottom: 2rem;
+}
+
+.reading-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reading-title {
+  color: #fbbf24;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.reading-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Ratings Grid */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.rating-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.rating-card:hover {
+  transform: translateY(-3px);
+}
+
+.rating-category {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+.rating-value {
+  color: rgba(196, 181, 253, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Key Dates */
+.key-dates-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.key-dates-title {
+  color: #fbbf24;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.key-dates-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-date-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.date-icon {
+  color: #fbbf24;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.date-text {
+  color: rgba(196, 181, 253, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* No Selection State */
+.no-selection {
+  text-align: center;
+  padding: 4rem 2rem;
+  animation: fade-in 0.5s ease-out;
+}
+
+.crystal-ball {
+  font-size: clamp(4rem, 10vw, 6rem);
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  animation: float 4s ease-in-out infinite;
+}
+
+.no-selection-title {
+  color: rgba(196, 181, 253, 0.9);
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.no-selection-subtitle {
+  color: rgba(221, 214, 254, 0.7);
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .horoscope-content {
+    padding: 1rem 0.5rem;
+  }
+  
 }
