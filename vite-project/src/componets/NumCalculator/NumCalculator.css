@@ -1,0 +1,57 @@
+.numerology-container {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #4b0082, #800080);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.numerology-container h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.numerology-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+}
+
+.numerology-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.numerology-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.numerology-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff9800;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.numerology-button:hover {
+  background-color: #e68900;
+}
+
+.numerology-results {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 8px;
+}

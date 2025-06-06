@@ -1,0 +1,260 @@
+{
+  "life_paths": {
+    "1": {
+      "name": "The Leader",
+      "description": "Life Path 1 individuals are natural-born leaders. You crave independence and value your freedom in both work and relationships. You have a determined and strong-willed nature, but sometimes this makes you a bit stubborn. Leadership is in your blood.",
+      "Strengths": [
+        "Natural-born leaders",
+        "Independent",
+        "Original thinkers",
+        "Innovative",
+        "Creative",
+        "Determined",
+        "Inspired",
+        "Courageous",
+        "Dependable",
+        "Resourceful"
+      ],
+      "Challenges": [
+        "Can be narcissistic when out of alignment",
+        "Overprotective",
+        "Intolerant",
+        "Domineering",
+        "Insecure",
+        "Helpless",
+        "Victimized",
+        "Wishy-washy",
+        "Lack of self-respect",
+        "Not good at finishing things",
+        "Struggles with criticism"
+      ]
+    },
+    "2": {
+      "name": "The Empath",
+      "description": "Life Path 2 people are empathetic and deeply connected to the emotions of others. While you may seem sensitive, you possess a strong inner core. You are a wonderful friend, counselor, or mediator. People appreciate your open-mindedness and kind heart.",
+      "Strengths": [
+        "Sensitive",
+        "Supportive",
+        "Diplomatic",
+        "Patient",
+        "Cooperative",
+        "Detail-oriented",
+        "Intuitive",
+        "Kind",
+        "Understanding",
+        "Excellent managers and mediators"
+      ],
+      "Challenges": [
+        "Careless",
+        "Indecisive",
+        "Shy",
+        "Resentful",
+        "Narrow-minded",
+        "Timid",
+        "Insecure",
+        "Confused",
+        "Moody",
+        "Easily offended",
+        "Struggles with emotions",
+        "May have narcissistic tendencies"
+      ]
+    },
+    "3": {
+      "name": "The Creative",
+      "description": "As a Life Path 3, creativity is your lifeblood. Whether through art, music, or performance, you are constantly expressing yourself and inspiring others. Your natural charisma and creativity will lead the way.",
+      "Strengths": [
+        "Excellent communicators",
+        "Joyful",
+        "Artistic",
+        "Outgoing",
+        "Cheerful",
+        "Enthusiastic",
+        "Charming",
+        "Able to spark joy in others"
+      ],
+      "Challenges": [
+        "Tendency to worry",
+        "Lack of concentration and focus",
+        "Easily distracted",
+        "Bad work ethic",
+        "Jealousy",
+        "Criticism",
+        "Prone to stirring up drama",
+        "May struggle with anxiety and depression",
+        "Isolation during tough times"
+      ]
+    },
+    "4": {
+      "name": "The Planner",
+      "description": "Practical and grounded, Life Path 4 individuals are highly organized and have a strong sense of duty. With a solid plan for the future, you excel in structured environments and stick to your principles.",
+      "Strengths": [
+        "Reliable",
+        "Loyal",
+        "Diligent workers",
+        "Practical",
+        "Accurate",
+        "Straightforward",
+        "Conscientious",
+        "Seek security and stability",
+        "Value home, family, and friends"
+      ],
+      "Challenges": [
+        "Bossy",
+        "Rigid",
+        "Humorless",
+        "Argumentative",
+        "Resistant to innovation",
+        "Perfectionism",
+        "Workaholic tendencies"
+      ]
+    },
+    "5": {
+      "name": "The Communicator",
+      "description": "If you are a Life Path 5, you are an adventurer at heart who loves freedom. Communication comes naturally to you, and your energy is infectious. You inspire others with your persuasive nature.",
+      "Strengths": [
+        "Curious",
+        "Resilient",
+        "Fearless",
+        "Flexible",
+        "Fun",
+        "Social",
+        "Love change and adventure",
+        "Magnetic",
+        "Witty",
+        "Brave",
+        "Dynamic",
+        "Entertaining",
+        "Seek new experiences"
+      ],
+      "Challenges": [
+        "Uncertain",
+        "Indecisive",
+        "Impulsive",
+        "Careless",
+        "Easily overwhelmed",
+        "Restless",
+        "Procrastination",
+        "Lack of follow-through",
+        "Prone to excess"
+      ]
+    },
+    "6": {
+      "name": "The Supporter",
+      "description": "People born under Life Path 6 are caregivers. Your compassionate personality makes you someone people can rely on, often guiding others with wisdom and empathy.",
+      "Strengths": [
+        "Comforting",
+        "Uplifting",
+        "Giving advice",
+        "Adore family",
+        "Honorable",
+        "Make great friends",
+        "Poised",
+        "Nurturing",
+        "Artistic",
+        "Romantic",
+        "Devoted",
+        "Sensible"
+      ],
+      "Challenges": [
+        "Perfectionistic",
+        "Critical",
+        "Idealistic to a fault",
+        "Self-righteous",
+        "Meddlesome",
+        "Indulgent",
+        "Self-absorbed"
+      ]
+    },
+    "7": {
+      "name": "The Thinker",
+      "description": "If you’re a Life Path 7, you are driven by an internal quest for truth and knowledge. You enjoy investigating life’s mysteries and are deeply introspective, always seeking answers.",
+      "Strengths": [
+        "Insightful",
+        "Intellectual",
+        "Serene",
+        "Private",
+        "Value history and nature",
+        "Seek deeper universal truths",
+        "Creative",
+        "Truth seekers",
+        "Analytical"
+      ],
+      "Challenges": [
+        "Detached",
+        "Unemotional",
+        "Pessimistic",
+        "Withdrawn",
+        "Nervous",
+        "Aloof",
+        "Repressed emotionally",
+        "Can be deceitful"
+      ]
+    },
+    "8": {
+      "name": "The Pragmatist",
+      "description": "Life Path 8 people are ambitious and goal-oriented. You have a strong desire for success and financial stability, often drawn to careers that offer rewards for hard work.",
+      "Strengths": [
+        "Powerful",
+        "Authoritative",
+        "Energetic",
+        "Honorable",
+        "Confident",
+        "Dependable",
+        "Goal-oriented",
+        "Inspirational",
+        "Great leaders"
+      ],
+      "Challenges": [
+        "Materialistic",
+        "Thoughtless",
+        "Controlling",
+        "Careless with money",
+        "Egotistical",
+        "Scheming",
+        "Impatient",
+        "Worry about powerlessness",
+        "Financial insecurity concerns"
+      ]
+    },
+    "9": {
+      "name": "The Humanitarian",
+      "description": "As a Life Path 9, you are driven by a desire to help others and make the world a better place. You see the bigger picture and are motivated by causes larger than yourself.",
+      "Strengths": [
+        "Embodiment of unconditional love",
+        "Open-minded",
+        "Creative",
+        "Romantic",
+        "Empathetic",
+        "Magnetic",
+        "Humanitarian",
+        "Charitable",
+        "Kind",
+        "Idealistic"
+      ],
+      "Challenges": [
+        "Struggles with letting go",
+        "Extremely sensitive",
+        "Resentful",
+        "Cautious",
+        "Nervous",
+        "Gullible",
+        "Easily used by others",
+        "Pessimistic about the world and future"
+      ]
+    },
+    "master_numbers": {
+      "11": {
+        "name": "The Visionary",
+        "description": "Life Path 11 individuals possess strong intuition and often serve as sources of inspiration. You are destined to be a visionary, always seeking the next great project or cause."
+      },
+      "22": {
+        "name": "The Master Builder",
+        "description": "Life Path 22 is known as the 'Master Builder' and represents great success. You have the potential to leave a lasting legacy, overcoming challenges along the way."
+      },
+      "33": {
+        "name": "The Teacher",
+        "description": "As a Life Path 33, you are among the most powerful and influential of all life path numbers. You radiate warmth and compassion, naturally guiding others as a mentor or teacher."
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ import Horoscope from './componets/Horoscope/Horoscope';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom';
 import AllTogether from './componets/AllTogether/AllTogether';
 import Learn from './componets/Learn/Learn';
-
+import NumCalculator from './componets/NumCalculator/NumCalculator'
 
 function App() {
  
@@ -23,6 +23,7 @@ function App() {
         <Route path="/horoscope/:sign" element={<Horoscope />} />
         <Route path="/horoscope" element={<AllTogether />} />
         <Route path="/learn" element={<Learn />} />
+        <Route path="/numerlogy" element={<NumCalculator />} />
 
 
       {/* <Horoscope/> */}

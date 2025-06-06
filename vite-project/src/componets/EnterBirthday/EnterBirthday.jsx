@@ -1,465 +1,285 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const EnterBirthday = () => {
-  const [day, setDay] = useState('');
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
-  const [chartData, setChartData] = useState(null);
-  const [loading, setLoading] = useState(false);
- const zodiacSigns = [
-    { name: 'Aries', dates: [3, 21, 4, 19], symbol: '♈' },
-    { name: 'Taurus', dates: [4, 20, 5, 20], symbol: '♉' },
-    { name: 'Gemini', dates: [5, 21, 6, 20], symbol: '♊' },
-    { name: 'Cancer', dates: [6, 21, 7, 22], symbol: '♋' },
-    { name: 'Leo', dates: [7, 23, 8, 22], symbol: '♌' },
-    { name: 'Virgo', dates: [8, 23, 9, 22], symbol: '♍' },
-    { name: 'Libra', dates: [9, 23, 10, 22], symbol: '♎' },
-    { name: 'Scorpio', dates: [10, 23, 11, 21], symbol: '♏' },
-    { name: 'Sagittarius', dates: [11, 22, 12, 21], symbol: '♐' },
-    { name: 'Capricorn', dates: [12, 22, 1, 19], symbol: '♑' },
-    { name: 'Aquarius', dates: [1, 20, 2, 18], symbol: '♒' },
-    { name: 'Pisces', dates: [2, 19, 3, 20], symbol: '♓' }
-  ];
+// const EnterBirthday = () => {
+//   const [day, setDay] = useState('');
+//   const [month, setMonth] = useState('');
+//   const [year, setYear] = useState('');
+//   const [chartData, setChartData] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//  const zodiacSigns = [
+//     { name: 'Aries', dates: [3, 21, 4, 19], symbol: '♈' },
+//     { name: 'Taurus', dates: [4, 20, 5, 20], symbol: '♉' },
+//     { name: 'Gemini', dates: [5, 21, 6, 20], symbol: '♊' },
+//     { name: 'Cancer', dates: [6, 21, 7, 22], symbol: '♋' },
+//     { name: 'Leo', dates: [7, 23, 8, 22], symbol: '♌' },
+//     { name: 'Virgo', dates: [8, 23, 9, 22], symbol: '♍' },
+//     { name: 'Libra', dates: [9, 23, 10, 22], symbol: '♎' },
+//     { name: 'Scorpio', dates: [10, 23, 11, 21], symbol: '♏' },
+//     { name: 'Sagittarius', dates: [11, 22, 12, 21], symbol: '♐' },
+//     { name: 'Capricorn', dates: [12, 22, 1, 19], symbol: '♑' },
+//     { name: 'Aquarius', dates: [1, 20, 2, 18], symbol: '♒' },
+//     { name: 'Pisces', dates: [2, 19, 3, 20], symbol: '♓' }
+//   ];
 
-  // Comprehensive zodiac data
-  const zodiacData = {
-    "aries": {
-      "sign": "Aries",
-      "symbol": "♈",
-      "element": "Fire",
-      "quality": "Cardinal",
-      "rulingPlanet": "Mars",
-      "dates": "March 21 - April 19",
-      "personality": {
-        "overview": "Aries are natural-born leaders who are bold, ambitious, and always ready to take on new challenges. They possess incredible energy and enthusiasm that inspires others around them.",
-        "coreTraits": ["Leadership", "Courage", "Initiative", "Enthusiasm", "Independence", "Competitiveness", "Spontaneity"],
-        "strengths": ["Natural leadership abilities", "Fearless in facing challenges", "High energy and motivation", "Quick decision-making", "Pioneering spirit", "Honest and direct communication"],
-        "weaknesses": ["Impulsive behavior", "Short temper", "Impatience", "Can be selfish", "Difficulty with long-term planning", "May rush into situations without thinking"]
-      },
-      "temperament": {
-        "dominant": "Choleric",
-        "description": "High-energy, driven, and passionate. Aries tend to be quick to act and react, with intense emotions that burn bright but may not last long.",
-        "emotionalPattern": "Quick to anger, quick to forgive. Passionate and intense but moves on rapidly from conflicts."
-      },
-      "careers": {
-        "idealOccupations": ["Entrepreneur", "Military Officer", "Sales Manager", "Emergency Response", "Sports Coach", "Project Manager", "Surgeon", "Police Officer"],
-        "industries": ["Business & Entrepreneurship", "Sports & Fitness", "Emergency Services", "Sales & Marketing", "Healthcare", "Military & Security"],
-        "workStyle": "Thrives in fast-paced, challenging environments where they can lead and make quick decisions. Prefers independence and autonomy."
-      },
-      "relationships": {
-        "bestMatches": ["Leo", "Sagittarius", "Gemini", "Aquarius"],
-        "challenging": ["Cancer", "Capricorn"],
-        "loveStyle": "Passionate, direct, and intense. Aries dive headfirst into relationships with enthusiasm and expect the same energy in return."
-      },
-      "health": {
-        "strengths": ["High energy levels", "Strong immune system", "Quick recovery"],
-        "vulnerabilities": ["Head injuries", "Stress-related issues", "Burnout from overexertion"],
-        "recommendations": ["Regular intense exercise", "Stress management", "Adequate rest despite high energy"]
-      },
-      "life_path": "Aries are meant to be trailblazers and initiators. Their life purpose often involves breaking new ground, leading others, and having the courage to venture into uncharted territory."
-    },
-    "taurus": {
-      "sign": "Taurus",
-      "symbol": "♉",
-      "element": "Earth",
-      "quality": "Fixed",
-      "rulingPlanet": "Venus",
-      "dates": "April 20 - May 20",
-      "personality": {
-        "overview": "Taurus individuals are known for their reliability, practicality, and love of comfort and luxury. They value stability and security above all else and approach life with patience and determination.",
-        "coreTraits": ["Reliability", "Patience", "Practicality", "Determination", "Loyalty", "Sensuality", "Stubbornness"],
-        "strengths": ["Extremely reliable and trustworthy", "Patient and persistent", "Great with finances", "Appreciates beauty and art", "Strong work ethic", "Loyal friend and partner"],
-        "weaknesses": ["Can be overly stubborn", "Resistant to change", "Materialistic tendencies", "May be possessive", "Slow to adapt", "Can hold grudges"]
-      },
-      "temperament": {
-        "dominant": "Phlegmatic",
-        "description": "Calm, steady, and even-tempered. Taurus individuals are known for their emotional stability and peaceful nature, though they can become immovable when pushed.",
-        "emotionalPattern": "Slow to anger but explosive when pushed too far. Generally calm and steady with deep, lasting emotions."
-      },
-      "careers": {
-        "idealOccupations": ["Financial Advisor", "Chef", "Interior Designer", "Banker", "Real Estate Agent", "Farmer", "Artist", "Luxury Goods Sales"],
-        "industries": ["Finance & Banking", "Culinary Arts", "Real Estate", "Agriculture", "Art & Design", "Luxury Retail"],
-        "workStyle": "Prefers stable, secure work environments with clear expectations. Excels in roles requiring patience, attention to detail, and long-term planning."
-      },
-      "relationships": {
-        "bestMatches": ["Virgo", "Capricorn", "Cancer", "Pisces"],
-        "challenging": ["Leo", "Aquarius"],
-        "loveStyle": "Loyal, devoted, and sensual. Taurus seeks long-term, stable relationships and expresses love through physical affection and material gifts."
-      },
-      "health": {
-        "strengths": ["Generally robust health", "Good endurance", "Strong constitution"],
-        "vulnerabilities": ["Throat and neck issues", "Weight gain from love of food", "Circulation problems"],
-        "recommendations": ["Regular moderate exercise", "Balanced diet despite love of indulgence", "Attention to neck and throat health"]
-      },
-      "life_path": "Taurus is meant to build lasting foundations and appreciate the beauty in life. Their purpose often involves creating stability, cultivating resources, and helping others find security and comfort."
-    },
-    "gemini": {
-      "sign": "Gemini",
-      "symbol": "♊",
-      "element": "Air",
-      "quality": "Mutable",
-      "rulingPlanet": "Mercury",
-      "dates": "May 21 - June 20",
-      "personality": {
-        "overview": "Gemini individuals are intellectually curious, adaptable, and excellent communicators. They thrive on variety and mental stimulation, often juggling multiple interests and projects simultaneously.",
-        "coreTraits": ["Communication", "Adaptability", "Curiosity", "Wit", "Versatility", "Intelligence", "Restlessness"],
-        "strengths": ["Excellent communication skills", "Quick learner", "Adaptable to change", "Great sense of humor", "Intellectually curious", "Social and charming"],
-        "weaknesses": ["Can be superficial", "Inconsistent", "Indecisive", "May spread themselves too thin", "Tendency to gossip", "Difficulty with commitment"]
-      },
-      "temperament": {
-        "dominant": "Sanguine",
-        "description": "Quick-witted, social, and mentally agile. Geminis are naturally optimistic and enthusiastic, with a childlike curiosity about the world.",
-        "emotionalPattern": "Emotions change quickly like the weather. Generally upbeat but can become anxious or scattered when overwhelmed."
-      },
-      "careers": {
-        "idealOccupations": ["Journalist", "Teacher", "Sales Representative", "Translator", "Social Media Manager", "Writer", "Public Relations", "Software Developer"],
-        "industries": ["Media & Communications", "Education", "Technology", "Publishing", "Marketing", "Translation Services"],
-        "workStyle": "Needs variety and mental stimulation. Excels in roles requiring communication, learning new things, and connecting with people."
-      },
-      "relationships": {
-        "bestMatches": ["Libra", "Aquarius", "Aries", "Leo"],
-        "challenging": ["Virgo", "Pisces"],
-        "loveStyle": "Intellectual connection is crucial. Gemini needs mental stimulation and variety in relationships, preferring partners who can engage in witty conversation."
-      },
-      "health": {
-        "strengths": ["Generally good immunity", "Quick recovery", "Mental resilience"],
-        "vulnerabilities": ["Respiratory issues", "Nervous system disorders", "Anxiety and stress"],
-        "recommendations": ["Breathing exercises", "Mental relaxation techniques", "Regular communication and social interaction"]
-      },
-      "life_path": "Gemini is meant to be a bridge between different worlds and ideas. Their purpose involves communication, learning, teaching, and helping others connect and understand each other."
-    },
-    "cancer": {
-      "sign": "Cancer",
-      "symbol": "♋",
-      "element": "Water",
-      "quality": "Cardinal",
-      "rulingPlanet": "Moon",
-      "dates": "June 21 - July 22",
-      "personality": {
-        "overview": "Cancer individuals are deeply emotional, intuitive, and nurturing. They value family, home, and emotional security above all else, and have a natural ability to care for and protect others.",
-        "coreTraits": ["Nurturing", "Intuition", "Emotional Depth", "Loyalty", "Protectiveness", "Sensitivity", "Imagination"],
-        "strengths": ["Highly intuitive", "Excellent caregiver", "Emotionally intelligent", "Loyal and devoted", "Creative and imaginative", "Strong family values"],
-        "weaknesses": ["Overly emotional", "Moody", "Can be clingy", "Holds onto past hurts", "Indirect communication", "Fear of rejection"]
-      },
-      "temperament": {
-        "dominant": "Melancholic",
-        "description": "Deeply emotional and sensitive to their environment. Cancers feel everything intensely and have rich inner emotional lives.",
-        "emotionalPattern": "Emotions run deep and last long. Mood changes with phases like the moon. Highly empathetic to others' feelings."
-      },
-      "careers": {
-        "idealOccupations": ["Nurse", "Social Worker", "Therapist", "Chef", "Interior Designer", "Teacher", "Childcare Provider", "Museum Curator"],
-        "industries": ["Healthcare", "Social Services", "Education", "Hospitality", "Real Estate", "Food & Beverage"],
-        "workStyle": "Thrives in supportive, family-like work environments. Excels in caring professions and roles that involve helping others."
-      },
-      "relationships": {
-        "bestMatches": ["Scorpio", "Pisces", "Taurus", "Virgo"],
-        "challenging": ["Aries", "Libra"],
-        "loveStyle": "Seeks deep emotional connection and security. Cancer loves deeply and wants to nurture and be nurtured in return."
-      },
-      "health": {
-        "strengths": ["Strong intuition about health needs", "Good recovery when feeling secure", "Natural healing abilities"],
-        "vulnerabilities": ["Digestive issues", "Breast health concerns", "Emotional eating"],
-        "recommendations": ["Stress management", "Healthy eating habits", "Regular emotional check-ins"]
-      },
-      "life_path": "Cancer is meant to nurture and heal. Their purpose often involves caring for others, preserving traditions, and creating safe, loving environments for people to grow and thrive."
-    },
-    "leo": {
-      "sign": "Leo",
-      "symbol": "♌",
-      "element": "Fire",
-      "quality": "Fixed",
-      "rulingPlanet": "Sun",
-      "dates": "July 23 - August 22",
-      "personality": {
-        "overview": "Leo individuals are confident, charismatic, and natural performers. They love being in the spotlight, have generous hearts, and inspire others with their warmth and enthusiasm.",
-        "coreTraits": ["Confidence", "Charisma", "Generosity", "Creativity", "Leadership", "Drama", "Loyalty"],
-        "strengths": ["Natural leadership abilities", "Confident and charismatic", "Generous and warm-hearted", "Creative and artistic", "Loyal to loved ones", "Inspiring to others"],
-        "weaknesses": ["Can be egotistical", "Needs constant attention", "Dramatic tendencies", "Stubborn", "Can be domineering", "Sensitive to criticism"]
-      },
-      "temperament": {
-        "dominant": "Choleric-Sanguine",
-        "description": "Warm, generous, and naturally magnetic. Leos have sunny dispositions but can become dramatic when their pride is wounded.",
-        "emotionalPattern": "Generally optimistic and warm, but can become dramatically upset when feeling unappreciated or criticized."
-      },
-      "careers": {
-        "idealOccupations": ["Actor", "CEO", "Event Planner", "Public Relations", "Teacher", "Politician", "Artist", "Entertainment Industry"],
-        "industries": ["Entertainment", "Politics", "Education", "Luxury Goods", "Fashion", "Management"],
-        "workStyle": "Needs recognition and appreciation. Excels in leadership roles and positions where they can inspire and motivate others."
-      },
-      "relationships": {
-        "bestMatches": ["Aries", "Sagittarius", "Gemini", "Libra"],
-        "challenging": ["Taurus", "Scorpio"],
-        "loveStyle": "Romantic, generous, and passionate. Leo loves grand gestures and wants to be admired and appreciated by their partner."
-      },
-      "health": {
-        "strengths": ["Generally robust health", "Strong heart", "Good vitality"],
-        "vulnerabilities": ["Heart conditions", "Back problems", "Stress from overwork"],
-        "recommendations": ["Regular cardiovascular exercise", "Back care and posture attention", "Balance work with play"]
-      },
-      "life_path": "Leo is meant to shine and inspire others. Their purpose involves leadership, creativity, and bringing joy and warmth to the world through their unique talents and generous spirit."
-    },
-    "virgo": {
-      "sign": "Virgo",
-      "symbol": "♍",
-      "element": "Earth",
-      "quality": "Mutable",
-      "rulingPlanet": "Mercury",
-      "dates": "August 23 - September 22",
-      "personality": {
-        "overview": "Virgo individuals are analytical, practical, and perfectionistic. They have a keen eye for detail, strong organizational skills, and a genuine desire to help and serve others.",
-        "coreTraits": ["Analysis", "Perfectionism", "Service", "Organization", "Practicality", "Modesty", "Reliability"],
-        "strengths": ["Excellent attention to detail", "Highly organized", "Practical problem-solver", "Reliable and hardworking", "Analytical mind", "Helpful and service-oriented"],
-        "weaknesses": ["Overly critical", "Perfectionist tendencies", "Worry and anxiety", "Can be nitpicky", "Self-critical", "Difficulty relaxing"]
-      },
-      "temperament": {
-        "dominant": "Melancholic",
-        "description": "Thoughtful, analytical, and detail-oriented. Virgos tend to be introspective and can be their own harshest critics.",
-        "emotionalPattern": "Steady but prone to worry and overthinking. Emotions are often internalized and analyzed rather than openly expressed."
-      },
-      "careers": {
-        "idealOccupations": ["Healthcare Professional", "Accountant", "Editor", "Researcher", "Quality Control", "Nutritionist", "Administrative Assistant", "Analyst"],
-        "industries": ["Healthcare", "Finance", "Research", "Publishing", "Quality Assurance", "Service Industries"],
-        "workStyle": "Excels in detail-oriented work requiring precision and organization. Prefers structured environments with clear procedures."
-      },
-      "relationships": {
-        "bestMatches": ["Taurus", "Capricorn", "Cancer", "Scorpio"],
-        "challenging": ["Gemini", "Sagittarius"],
-        "loveStyle": "Practical and devoted. Virgo shows love through acts of service and taking care of their partner's needs."
-      },
-      "health": {
-        "strengths": ["Health-conscious", "Good self-care habits", "Attention to nutrition"],
-        "vulnerabilities": ["Digestive issues", "Anxiety disorders", "Obsessive-compulsive tendencies"],
-        "recommendations": ["Stress reduction techniques", "Regular health check-ups", "Balance perfectionism with self-acceptance"]
-      },
-      "life_path": "Virgo is meant to serve and heal. Their purpose involves helping others improve their lives through practical assistance, health, and bringing order to chaos."
-    },
-    "libra": {
-      "sign": "Libra",
-      "symbol": "♎",
-      "element": "Air",
-      "quality": "Cardinal",
-      "rulingPlanet": "Venus",
-      "dates": "September 23 - October 22",
-      "personality": {
-        "overview": "Libra individuals are diplomatic, charming, and seek harmony in all aspects of life. They have a natural sense of justice, appreciate beauty, and excel at bringing people together.",
-        "coreTraits": ["Diplomacy", "Balance", "Charm", "Justice", "Partnership", "Aesthetics", "Indecision"],
-        "strengths": ["Excellent mediator", "Charming and social", "Fair and just", "Appreciates beauty", "Good partnership skills", "Natural peacemaker"],
-        "weaknesses": ["Indecisive", "Avoids confrontation", "Can be superficial", "People-pleasing", "Codependent tendencies", "Difficulty being alone"]
-      },
-      "temperament": {
-        "dominant": "Sanguine",
-        "description": "Social, charming, and seeks balance and harmony. Libras are generally pleasant and diplomatic but can become anxious when faced with conflict.",
-        "emotionalPattern": "Seeks emotional equilibrium and can become distressed by discord. Generally optimistic but sensitive to relationship dynamics."
-      },
-      "careers": {
-        "idealOccupations": ["Lawyer", "Diplomat", "Counselor", "Interior Designer", "Art Dealer", "Human Resources", "Judge", "Fashion Designer"],
-        "industries": ["Law", "Diplomacy", "Arts & Design", "Human Resources", "Beauty & Fashion", "Counseling"],
-        "workStyle": "Thrives in collaborative environments. Excels in roles requiring diplomacy, aesthetic sense, and people skills."
-      },
-      "relationships": {
-        "bestMatches": ["Gemini", "Aquarius", "Leo", "Sagittarius"],
-        "challenging": ["Cancer", "Capricorn"],
-        "loveStyle": "Romantic and partnership-oriented. Libra seeks harmony and balance in relationships and loves romantic gestures."
-      },
-      "health": {
-        "strengths": ["Generally balanced health", "Good social support system", "Aesthetic awareness of wellness"],
-        "vulnerabilities": ["Kidney issues", "Lower back problems", "Stress from decision-making"],
-        "recommendations": ["Regular exercise for balance", "Stress management", "Healthy relationship boundaries"]
-      },
-      "life_path": "Libra is meant to bring balance and harmony to the world. Their purpose involves creating beauty, fostering cooperation, and helping others find peaceful solutions to conflicts."
-    },
-    "scorpio": {
-      "sign": "Scorpio",
-      "symbol": "♏",
-      "element": "Water",
-      "quality": "Fixed",
-      "rulingPlanet": "Pluto (traditional: Mars)",
-      "dates": "October 23 - November 21",
-      "personality": {
-        "overview": "Scorpio individuals are intense, passionate, and mysterious. They possess incredible emotional depth, strong intuition, and the ability to transform themselves and others through profound experiences.",
-        "coreTraits": ["Intensity", "Passion", "Mystery", "Transformation", "Intuition", "Determination", "Secrecy"],
-        "strengths": ["Incredibly intuitive", "Emotionally deep", "Loyal and devoted", "Great investigative abilities", "Transformative power", "Strong willpower"],
-        "weaknesses": ["Can be jealous", "Secretive", "Vindictive", "Obsessive", "Controlling", "Difficulty trusting others"]
-      },
-      "temperament": {
-        "dominant": "Melancholic-Choleric",
-        "description": "Deep, intense, and transformative. Scorpios feel everything at the deepest level and have powerful emotional undercurrents.",
-        "emotionalPattern": "Emotions run extremely deep. Slow to trust but once committed, incredibly loyal. Can hold grudges but also capable of profound forgiveness."
-      },
-      "careers": {
-        "idealOccupations": ["Psychologist", "Detective", "Surgeon", "Researcher", "Investigative Journalist", "Therapist", "Forensic Scientist", "Investment Banker"],
-        "industries": ["Psychology", "Investigation", "Medicine", "Research", "Finance", "Occult Studies"],
-        "workStyle": "Excels in roles requiring deep investigation, transformation, and dealing with life's mysteries. Prefers working independently or in small, trusted teams."
-      },
-      "relationships": {
-        "bestMatches": ["Cancer", "Pisces", "Virgo", "Capricorn"],
-        "challenging": ["Leo", "Aquarius"],
-        "loveStyle": "All-or-nothing approach to love. Scorpio seeks deep, transformative relationships and can be intensely jealous but also incredibly loyal."
-      },
-      "health": {
-        "strengths": ["Strong healing abilities", "Good at recovery", "High pain tolerance"],
-        "vulnerabilities": ["Reproductive system issues", "Stress-related ailments", "Addiction tendencies"],
-        "recommendations": ["Regular detoxification", "Emotional release work", "Healthy outlets for intensity"]
-      },
-      "life_path": "Scorpio is meant to transform and regenerate. Their purpose involves helping others through profound changes, uncovering hidden truths, and facilitating deep healing."
-    },
-    "sagittarius": {
-      "sign": "Sagittarius",
-      "symbol": "♐",
-      "element": "Fire",
-      "quality": "Mutable",
-      "rulingPlanet": "Jupiter",
-      "dates": "November 22 - December 21",
-      "personality": {
-        "overview": "Sagittarius individuals are adventurous, optimistic, and philosophical. They love to explore, learn, and share their knowledge with others, always seeking to expand their horizons.",
-        "coreTraits": ["Adventure", "Optimism", "Philosophy", "Freedom", "Honesty", "Exploration", "Restlessness"],
-        "strengths": ["Optimistic outlook", "Adventurous spirit", "Honest and direct", "Philosophical mind", "Great sense of humor", "Inspiring teacher"],
-        "weaknesses": ["Can be tactless", "Commitment issues", "Impatient", "Over-promising", "Restless", "May be irresponsible"]
-      },
-      "temperament": {
-        "dominant": "Sanguine",
-        "description": "Optimistic, adventurous, and freedom-loving. Sagittarians are naturally enthusiastic and have an infectious zest for life.",
-        "emotionalPattern": "Generally upbeat and optimistic. Quick to bounce back from setbacks. Can become restless or depressed when feeling confined."
-      },
-      "careers": {
-        "idealOccupations": ["Travel Guide", "Teacher", "Philosopher", "International Business", "Publisher", "Outdoor Guide", "Foreign Correspondent", "University Professor"],
-        "industries": ["Travel & Tourism", "Education", "Publishing", "International Trade", "Sports & Recreation", "Religious Organizations"],
-        "workStyle": "Needs freedom and variety. Excels in roles involving travel, teaching, or exploring new ideas and cultures."
-      },
-      "relationships": {
-        "bestMatches": ["Aries", "Leo", "Libra", "Aquarius"],
-        "challenging": ["Virgo", "Pisces"],
-        "loveStyle": "Values freedom and adventure in relationships. Sagittarius seeks partners who share their love of exploration and learning."
-      },
-      "health": {
-        "strengths": ["Generally robust health", "Active lifestyle", "Good recovery abilities"],
-        "vulnerabilities": ["Hip and thigh injuries", "Liver issues", "Accidents from risk-taking"],
-        "recommendations": ["Regular physical activity", "Moderation in indulgences", "Safety awareness during adventures"]
-      },
-      "life_path": "Sagittarius is meant to seek and share wisdom. Their purpose involves teaching, exploring, and helping others expand their understanding of the world and themselves."
-    },
-    "capricorn": {
-      "sign": "Capricorn",
-      "symbol": "♑",
-      "element": "Earth",
-      "quality": "Cardinal",
-      "rulingPlanet": "Saturn",
-      "dates": "December 22 - January 19",
-      "personality": {
-        "overview": "Capricorn individuals are ambitious, disciplined, and practical. They are natural leaders who work steadily toward their goals and have a strong sense of responsibility and tradition.",
-        "coreTraits": ["Ambition", "Discipline", "Responsibility", "Tradition", "Patience", "Authority", "Conservatism"],
-        "strengths": ["Highly ambitious", "Excellent self-discipline", "Strong leadership", "Practical and realistic", "Responsible and reliable", "Good with long-term planning"],
-        "weaknesses": ["Can be pessimistic", "Workaholic tendencies", "Rigid thinking", "Difficulty expressing emotions", "May be too serious", "Status-conscious"]
-      },
-      "temperament": {
-        "dominant": "Melancholic",
-        "description": "Serious, responsible, and goal-oriented. Capricorns are naturally conservative and prefer structure and tradition.",
-        "emotionalPattern": "Emotions are carefully controlled and may be suppressed in favor of practical concerns. Deep feelings but difficulty expressing them."
-      },
-      "careers": {
-        "idealOccupations": ["CEO", "Government Official", "Banker", "Architect", "Project Manager", "Financial Planner", "Judge", "Engineer"],
-        "industries": ["Business Management", "Government", "Finance", "Construction", "Law", "Engineering"],
-        "workStyle": "Excels in structured, hierarchical environments. Natural leader who works best with clear goals and established procedures."
-      },
-      "relationships": {
-        "bestMatches": ["Taurus", "Virgo", "Scorpio", "Pisces"],
-        "challenging": ["Aries", "Libra"],
-        "loveStyle": "Traditional and committed. Capricorn takes relationships seriously and seeks long-term, stable partnerships."
-      },
-      "health": {
-        "strengths": ["Good constitution", "Disciplined health habits", "Good longevity"],
-        "vulnerabilities": ["Bone and joint issues", "Skin problems", "Depression from overwork"],
-        "recommendations": ["Regular exercise for bone health", "Work-life balance", "Skin care attention"]
-      },
-      "life_path": "Capricorn is meant to build and achieve. Their purpose involves creating lasting structures, leading others to success, and establishing traditions that benefit future generations."
-    },
-"aquarius": {
-  "sign": "Aquarius",
-  "symbol": "♒",
-  "element": "Air",
-  "quality": "Fixed",
-  "rulingPlanet": "Uranus (traditional: Saturn)",
-  "dates": "January 20 - February 18",
-  "personality": {
-    "overview": "Aquarius individuals are innovative, independent, and humanitarian. They are forward-thinking visionaries who value freedom and equality, often working to make the world a better place.",
-    "coreTraits": ["Innovation", "Independence", "Humanitarianism", "Originality", "Rebellion", "Detachment", "Idealism"],
-    "strengths": ["Highly innovative", "Independent thinker", "Humanitarian spirit", "Objective perspective", "Original ideas", "Friendly and social"],
-    "weaknesses": ["Can be aloof", "Stubborn about beliefs", "Unpredictable", "Difficulty with emotions", "May be impractical", "Rebellious nature"]
-  },
-  "temperament": {
-    "dominant": "Sanguine-Phlegmatic",
-    "description": "Independent, innovative, and somewhat detached. Aquarians are friendly but maintain emotional distance, preferring intellectual connections.",
-    "emotionalPattern": "Emotions are intellectualized rather than deeply felt. Friendly and social but can seem detached in intimate relationships."
-  },
-  "careers": {
-    "idealOccupations": ["Scientist", "Social Worker", "Technology Developer", "Humanitarian", "Inventor", "Astrologer", "Environmental Activist", "IT Specialist"],
-    "industries": ["Technology", "Science", "Social Services", "Environmental Organizations", "Innovation Labs", "Non-profits"],
-    "workStyle": "Needs intellectual freedom and the ability to innovate. Excels in roles involving technology, social causes, or cutting-edge research."
-  },
-  "relationships": {
-    "bestMatches": ["Gemini", "Libra", "Aries", "Sagittarius"],
-    "challenging": ["Taurus", "Scorpio"],
-    "loveStyle": "Values friendship and intellectual connection. Aquarius needs space and freedom in relationships and can seem emotionally detached."
-  },
-  "health": {
-    "strengths": ["Good circulation", "Strong nervous system", "Innovative health approaches"],
-    "vulnerabilities": ["Circulatory problems", "Ankle injuries", "Nervous disorders"],
-    "recommendations": ["Regular cardiovascular exercise", "Ankle protection during activities", "Stress management for nervous system"]
-  },
-  "life_path": "Aquarius is meant to innovate and reform. Their purpose involves bringing new ideas to humanity, fighting for equality, and creating a better future for all."
-},
-"pisces": {
-  "sign": "Pisces",
-  "symbol": "♓",
-  "element": "Water",
-  "quality": "Mutable",
-  "rulingPlanet": "Neptune (traditional: Jupiter)",
-  "dates": "February 19 - March 20",
-  "personality": {
-    "overview": "Pisces individuals are compassionate, intuitive, and artistic. They are deeply empathetic and often psychic, with rich inner lives and a strong connection to the spiritual realm.",
-    "coreTraits": ["Compassion", "Intuition", "Creativity", "Spirituality", "Empathy", "Imagination", "Escapism"],
-    "strengths": ["Highly intuitive", "Compassionate and caring", "Artistic and creative", "Spiritually aware", "Adaptable", "Understanding of others"],
-    "weaknesses": ["Overly emotional", "Escapist tendencies", "Difficulty with boundaries", "Can be impractical", "Victim mentality", "Addiction prone"]
-  },
-  "temperament": {
-    "dominant": "Phlegmatic-Melancholic",
-    "description": "Sensitive, dreamy, and deeply emotional. Pisceans are naturally empathetic and can absorb the emotions of those around them.",
-    "emotionalPattern": "Emotions are deep and fluid like water. Highly empathetic to others' feelings, sometimes to their own detriment."
-  },
-  "careers": {
-    "idealOccupations": ["Artist", "Therapist", "Nurse", "Musician", "Photographer", "Social Worker", "Spiritual Counselor", "Non-profit Worker"],
-    "industries": ["Arts & Entertainment", "Healthcare", "Social Services", "Spiritual Organizations", "Photography", "Music"],
-    "workStyle": "Needs emotionally fulfilling work that helps others. Excels in creative or healing professions that allow for flexibility and compassion."
-  },
-  "relationships": {
-    "bestMatches": ["Cancer", "Scorpio", "Taurus", "Capricorn"],
-    "challenging": ["Gemini", "Sagittarius"],
-    "loveStyle": "Romantic, devoted, and self-sacrificing. Pisces loves unconditionally and often puts their partner's needs before their own."
-  },
-  "health": {
-    "strengths": ["Strong healing abilities", "Intuitive about health needs", "Natural empathy aids in healing others"],
-    "vulnerabilities": ["Prone to emotional overwhelm", "Susceptible to addiction", "Feet and immune system issues", "Mental health challenges"],
-    "recommendations": ["Regular meditation and spiritual practices", "Boundary setting exercises", "Creative expression for emotional release", "Water-based activities for healing"]
-  },
-  "life_path": "Pisces is meant to heal, inspire, and guide through empathy and creativity, helping others connect with their emotions and inner truths."
-}
+
+//   return (
+//     <>
+//     <div>
+//       <h2>Enter your birthday</h2>
+//       {/* Add your form or UI here */}
+//     </div>
+//     </>
+//   )
+// }
+
+// export default EnterBirthday
 
 
 
 
-  }
 
 
 
 
-  return (
-    <>
-    <div>
-      <h2>Enter your birthday</h2>
-      {/* Add your form or UI here */}
-    </div>
-    </>
-  )
-}
+// {
+//   "soulNumber": [
+//     {
+//       "number": 1,
+//       "description": "Self-sufficiency and independence. Great leaders, confident in skills and willing to try new things. Face challenges requiring loyal followers. Enthusiasm and commitment influence others but may have conflicts with those who dislike being led.",
+// "reading": "Soul Urge Number 1\nThis number signifies self-sufficiency and independence. Individuals with soul urge number 1 are known to be great leaders. This number represents that the person is confident about their skills and they are not afraid to try new things.\n\nIf your soul urge number is 1, then your soul urge is to be a leader. But this number also faces some challenges, as with all other numbers. A great leader needs a loyal following.\n\nIf you are a leader, your enthusiasm will affect others and your commitment will also impact your followers.\n\nHowever, people with soul number 1 may have conflicts with people who do not like being led. These individuals also have a competitive feature which they may need to fade at times."
+//     },
+//     {
+//       "number": 2,
+//       "description": "Commitment-oriented, sensitive, and emotional. Enjoys friendships and refined tastes. Needs safety and comfort, appreciates exotic items, possesses musical talent, and prefers diplomatic influence over direct leadership.",
+//       "reading": "Soul Urge Number 2
+// People with soul urge number 2 like to have commitments that last long. They find love quickly. 
 
-export default EnterBirthday
+// However, they carry a highly sensitive personality and they are also emotional. They like to be around friends and society and they also relish the finer things in life. 
+
+// People with soul urge number 2 need safety and comfort. So they carry a sophisticated taste and appreciate exotic items. They possess excellent musical talent and are also driven towards music. 
+
+// "reading": "Soul Urge Number 2\nPeople with soul urge number 2 like to have commitments that last long. They find love quickly.\n\nHowever, they carry a highly sensitive personality and they are also emotional. They like to be around friends and society and they also relish the finer things in life.\n\nPeople with soul urge number 2 need safety and comfort. So they carry a sophisticated taste and appreciate exotic items. They possess excellent musical talent and are also driven towards music.\n\nThey are sensitive and diplomatic. They like to slowly influence people to match their point of view."
+// Your instincts are so soft that you need help realising that you can’t change the outcome of events on your own. There is no doubt, though, that you can make a difference in people’s lives and brighten their day. 
+
+// You find fulfilment in performing, and achieving fame would bring you much joy. No matter what you do, sceptics will appear. 
+
+// You need to develop the ability to recognise constructive criticism and ignore meaningless praise. As a result, you will have much greater success."
+//     },
+//     {
+//       "number": 4,
+//       "description": "Prefers order over chaos, seeks stability, and finds change difficult. Gains fulfillment by progressing toward goals. Avoids risks, follows norms strictly, and is stereotyped as dull. Inspires others through discipline and self-control.",
+//       "reading": "Is order more appealing to you than chaos? Is stability something you seek, and do you find a change to be difficult? 
+
+// "reading": "Soul Urge Number 3\nIf you belong to soul urge number 3 then you have a young, carefree spirit. You have a positive outlook on life and strive to spread that feeling of cheer and vitality to others.\n\nYour instincts are so soft that you need help realising that you can’t change the outcome of events on your own. There is no doubt, though, that you can make a difference in people’s lives and brighten their day.\n\nYou find fulfilment in performing, and achieving fame would bring you much joy. No matter what you do, sceptics will appear.\n\nYou need to develop the ability to recognise constructive criticism and ignore meaningless praise. As a result, you will have much greater success."
+// You’ll be an asset to any company due to this. Don’t let your need for order restrict your relationships with your partner or your kids."
+//     },
+//     {
+//       "number": 5,
+//       "description": "Fun-loving, adventurous, and dislikes restrictions. Enjoys exploring life experiences. Seeks pleasures in youth but later searches for deeper meaning, often following spiritual paths.",
+//       "reading": "Persons with soul urge number 5 are fun to be with. They have a happy and jolly vibe. According to numerology, people with the soul urge number 5 are seekers and they like to explore world life experiences. 
+
+// They do not like to be restricted and hence you will spot them not sticking to job roles that restrict their creativity or stop them from experimenting. 
+
+// At an early age, they always want to seek pleasures and delights to feel pumped up and alive. However, when they are old, they stop having such emotions and simulations. 
+
+// "reading": "Is order more appealing to you than chaos? Is stability something you seek, and do you find a change to be difficult?\n\nDo you get a lot of personal fulfilment from making progress toward an aim? It means the vowels in your name add up to make the soul number 4.\n\nThe importance of moderation and organisation in your daily life cannot be overstated. You prefer to stay within established parameters and follow all established norms.\n\nAs a result of your beliefs, you avoid taking any risks in life and are therefore stereotyped as being rather dull. For you, there is no middle ground; it is either black or white for you.\n\nExcellently inspiring others through your own self-control and diligence, you are a true role model. You have a rational, measured, and practical outlook on any given situation.\n\nYou’ll be an asset to any company due to this. Don’t let your need for order restrict your relationships with your partner or your kids."
+//       "description": "Intellectual, bookworm, and knowledge-seeker. Possesses strong grasping abilities and prioritizes books over social interactions.",
+//       "reading": "If you are more inclined towards books and knowledge, the vowels in your name may count as the numerological number 7. You are known to be nerdy, intellectual and a bookworm. 
+
+// You believe in gaining knowledge and reading books more than the people you are surrounded by. 
+
+// If your soul urge number is 7, you are likely to have an impressive grasping power and you can catch information, and skills better than other people. 
+
+// They often have more books as compared to the number of people in their life."
+//     },
+//     {
+//       "number": 8,
+//       "description": "Materialistic, driven by money, power, and success. Ambitious and capable but risks losing perspective if wealth is the sole goal.",
+//       "reading": "People with soul urge number 8 tend to be more materialistic. Their interests can be anything from money, power, and wealth to legal matters. You might feel more driven than average to achieve success. 
+
+// "reading": "Persons with soul urge number 5 are fun to be with. They have a happy and jolly vibe. According to numerology, people with the soul urge number 5 are seekers and they like to explore world life experiences.\n\nThey do not like to be restricted and hence you will spot them not sticking to job roles that restrict their creativity or stop them from experimenting.\n\nAt an early age, they always want to seek pleasures and delights to feel pumped up and alive. However, when they are old, they stop having such emotions and simulations.\n\nAs they grow old, they start looking for deeper meanings in life. If they want to discover more and find the purpose of their life, they are more likely to follow spiritual masters."
+//       "number": 9,
+//       "description": "Strives for perfection, deeply interested in human nature, and intuitive. Wishes to reduce suffering and values knowledge.",
+//       "reading": "9. Soul Urge Number 9
+// Those with soul urge number 9 value perfection and strive for perfection. You put a lot of effort into the smallest of details as you strive for perfection in every area of your life, for the betterment of the world at large, and for the betterment of your own. 
+
+// You’ve always been fascinated by human nature and have studied it all your life. You have above-average intuition but only a mediocre capacity for judging people’s motives and intentions. 
+
+// You also need a little guidance if you think that everyone else values the same things you do. 
+
+// Whether it be monetary, physical, or emotional, you wish you had the means to quickly end the suffering of others. You possess a perceptive mind and a wealth of information."
+// "reading": "People with Soul number 6 are very different from other personalities and are known to have paternal and maternal behaviours. They are very caring, supportive, and nurturing in nature.\n\nPeople with soul urge number 6 often feel the responsibility of taking care of everything and they are also concerned about the well-being of others."
+//       "description": "Unique individuals with strong hope and ambition. Recognizes deep connections between life and spiritual aspects.",
+//       "reading": "10. Soul Urge Number 11
+// The uniqueness of the number serves as a reminder that for these people that they are also one of a kind. 
+
+// They are big on hope and ambition, but they also know that it’s important to keep in mind that everything is interconnected on some level with the spiritual aspects of life."
+//     },
+// "reading": "If you are more inclined towards books and knowledge, the vowels in your name may count as the numerological number 7. You are known to be nerdy, intellectual and a bookworm.\n\nYou believe in gaining knowledge and reading books more than the people you are surrounded by.\n\nIf your soul urge number is 7, you are likely to have an impressive grasping power and you can catch information, and skills better than other people.\n\nThey often have more books as compared to the number of people in their life."
+
+// Even though you’re grounded in reality, you have high aspirations. People feel at ease and safe in your presence. 
+
+// Therefore, you possess inherent strengths as a manager, leader, and organiser. Helping others and seeing that help bring results will fulfil your life’s purpose.
+
+// 11. Soul Urge Number 33
+// The number 33 is the most unique of all and it is the ‘master teacher’.
+
+// This number matches the qualities of the soul urge number 6; meaning, they are nurturing and loving. 
+
+// "reading": "People with soul urge number 8 tend to be more materialistic. Their interests can be anything from money, power, and wealth to legal matters. You might feel more driven than average to achieve success.\n\nThe very essence of your being yearns for presence in the physical world. However, it’s easy to lose perspective if your main goal in life is to collect wealth.\n\nYour ambition and drive can get you far in life, but they can also lead you to do some pretty crazy things. You may be good at making money, but you might also easily waste it.\n\nIf you want to be happy, you have to strike a balance between your individual goals and the greater good."
+//     },
+    
+//     {
+//       "number": 33,
+//       "description": "Master teacher, nurturing and loving. Loyal, patient, and forgiving. Prioritizes others’ needs, finds joy in creative pursuits, and develops full potential later in life.",
+//       "reading": "The number 33 is the most unique of all and it is the ‘master teacher’.
+
+// This number matches the qualities of the soul urge number 6; meaning, they are nurturing and loving. 
+
+// If this is your life path number, you are loyal and patient. You are a patient listener who readily forgives others and who looks for the best in everyone. 
+// "reading": "Soul Urge Number 9\nThose with soul urge number 9 value perfection and strive for perfection. You put a lot of effort into the smallest of details as you strive for perfection in every area of your life, for the betterment of the world at large, and for the betterment of your own.\n\nYou’ve always been fascinated by human nature and have studied it all your life. You have above-average intuition but only a mediocre capacity for judging people’s motives and intentions.\n\nYou also need a little guidance if you think that everyone else values the same things you do.\n\nWhether it be monetary, physical, or emotional, you wish you had the means to quickly end the suffering of others. You possess a perceptive mind and a wealth of information."
+// }"reading": "Soul Urge Number 11\nThe uniqueness of the number serves as a reminder that for these people that they are also one of a kind.\n\nThey are big on hope and ambition, but they also know that it’s important to keep in mind that everything is interconnected on some level with the spiritual aspects of life."
+// "reading": "Soul Urge Number 22\nYou wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.\n\nEven though you’re grounded in reality, you have high aspirations. People feel at ease and safe in your presence.\n\nTherefore, you possess inherent strengths as a manager, leader, and organiser. Helping others and seeing that help bring results will fulfil your life’s purpose."
+// // "reading": "The number 33 is the most unique of all and it is the ‘master teacher’.\n\nThis number matches the qualities of the soul urge number 6; meaning, they are nurturing and loving.\n\nIf this is your life path number, you are loyal and patient. You are a patient listener who readily forgives others and who looks for the best in everyone.\n\nIt’s not uncommon for you to prioritise the wants of others over your own (sometimes to your detriment).\n\nYou try to find good and harmony in everything. You find great joy in creative pursuits and so naturally gravitate toward the arts.\n\nIt’s true that you have many gifts, but the path of soul urge 33 isn’t always smooth sailing. Until you’re 35, you might not realise the full extent of your skills."{
+//   "Soul Urge Numbers": {
+//     "1": "This number signifies self-sufficiency and independence. Individuals with soul urge number 1 are known to be great leaders. This number represents that the person is confident about their skills and they are not afraid to try new things.\n\nIf your soul urge number is 1, then your soul urge is to be a leader. But this number also faces some challenges, as with all other numbers. A great leader needs a loyal following.\n\nIf you are a leader, your enthusiasm will affect others and your commitment will also impact your followers.\n\nHowever, people with soul number 1 may have conflicts with people who do not like being led. These individuals also have a competitive feature which they may need to fade at times.",
+//     "2": "People with soul urge number 2 like to have commitments that last long. They find love quickly.\n\nHowever, they carry a highly sensitive personality and they are also emotional. They like to be around friends and society and they also relish the finer things in life.\n\nPeople with soul urge number 2 need safety and comfort. So they carry a sophisticated taste and appreciate exotic items. They possess excellent musical talent and are also driven towards music.\n\nThey are sensitive and diplomatic. They like to slowly influence people to match their point of view.",
+//     "3": "If you belong to soul urge number 3 then you have a young, carefree spirit. You have a positive outlook on life and strive to spread that feeling of cheer and vitality to others.\n\nYour instincts are so soft that you need help realising that you can’t change the outcome of events on your own. There is no doubt, though, that you can make a difference in people’s lives and brighten their day.\n\nYou find fulfilment in performing, and achieving fame would bring you much joy. No matter what you do, sceptics will appear.\n\nYou need to develop the ability to recognise constructive criticism and ignore meaningless praise. As a result, you will have much greater success.",
+//     "4": "Is order more appealing to you than chaos? Is stability something you seek, and do you find a change to be difficult?\n\nDo you get a lot of personal fulfilment from making progress toward an aim? It means the vowels in your name add up to make the soul number 4.\n\nThe importance of moderation and organisation in your daily life cannot be overstated. You prefer to stay within established parameters and follow all established norms.\n\nAs a result of your beliefs, you avoid taking any risks in life and are therefore stereotyped as being rather dull. For you, there is no middle ground; it is either black or white for you.\n\nExcellently inspiring others through your own self-control and diligence, you are a true role model. You have a rational, measured, and practical outlook on any given situation.\n\nYou’ll be an asset to any company due to this. Don’t let your need for order restrict your relationships with your partner or your kids.",
+//     "5": "Persons with soul urge number 5 are fun to be with. They have a happy and jolly vibe. According to numerology, people with the soul urge number 5 are seekers and they like to explore world life experiences.\n\nThey do not like to be restricted and hence you will spot them not sticking to job roles that restrict their creativity or stop them from experimenting.\n\nAt an early age, they always want to seek pleasures and delights to feel pumped up and alive. However, when they are old, they stop having such emotions and simulations.\n\nAs they grow old, they start looking for deeper meanings in life. If they want to discover more and find the purpose of their life, they are more likely to follow spiritual masters.",
+//     "6": "They are very different from other personalities and are known to have paternal and maternal behaviours. They are very caring, supportive, and nurturing in nature.\n\nPeople with soul urge number 6 often feel the responsibility of taking care of everything and they are also concerned about the well-being of others.",
+//     "7": "If you are more inclined towards books and knowledge, the vowels in your name may count as the numerological number 7. You are known to be nerdy, intellectual and a bookworm.\n\nYou believe in gaining knowledge and reading books more than the people you are surrounded by.\n\nIf your soul urge number is 7, you are likely to have an impressive grasping power and you can catch information, and skills better than other people.\n\nThey often have more books as compared to the number of people in their life.",
+//     "8": "People with soul urge number 8 tend to be more materialistic. Their interests can be anything from money, power, and wealth to legal matters. You might feel more driven than average to achieve success.\n\nThe very essence of your being yearns for presence in the physical world. However, it’s easy to lose perspective if your main goal in life is to collect wealth.\n\nYour ambition and drive can get you far in life, but they can also lead you to do some pretty crazy things. You may be good at making money, but you might also easily waste it.\n\nIf you want to be happy, you have to strike a balance between your individual goals and the greater good.",
+//     "9": "Those with soul urge number 9 value perfection and strive for perfection. You put a lot of effort into the smallest of details as you strive for perfection in every area of your life, for the betterment of the world at large, and for the betterment of your own.",
+//     "11": "The uniqueness of the number serves as a reminder that for these people that they are also one of a kind.\n\nThey are big on hope and ambition, but they also know that it’s important to keep in mind that everything is interconnected on some level with the spiritual aspects of life.",
+//     "22": "You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.",
+//     "33": "The number 33 is the most unique of all and it is the ‘master teacher’."
+//   }
+// }
+// {
+//   "Heart's Desire/Soul Urge Number": {
+//     "1": "You crave independence and leadership, desiring to rule over your own direction in life.",
+//     "2": "You seek peace, comfort, and security, striving for harmony through diplomacy and tact.",
+//     "3": "You are creative, playful, and outgoing, drawn to artistic expression and imaginative freedom.",
+//     "4": "You value order, structure, and stability, preferring routine and organization over change.",
+//     "5": "You desire freedom and new experiences, drawn to adventure and unconventional ideas.",
+//     "6": "You are compassionate and caring, focusing on family and helping loved ones.",
+//     "7": "You are introverted and inquisitive, seeking knowledge, philosophy, and deeper understanding.",
+//     "8": "You are ambitious and determined, drawn to material success, influence, and power.",
+//     "9": "You are idealistic and philanthropic, striving to improve the world and seeking validation for good deeds."
+//   }
+// }
+// 1. Soul Urge Number 1
+// This number signifies self-sufficiency and independence. Individuals with soul urge number 1 are known to be great leaders. This number represents that the person is confident about their skills and they are not afraid to try new things. 
+
+// If your soul urge number is 1, then your soul urge is to be a leader. But this number also faces some challenges, as with all other numbers. A great leader needs a loyal following. 
+
+// If you are a leader, your enthusiasm will affect others and your commitment will also impact your followers. 
+
+// However, people with soul number 1 may have conflicts with people who do not like being led. These individuals also have a competitive feature which they may need to fade at times. 
+
+
+
+// 2. Soul Urge Number 2
+// People with soul urge number 2 like to have commitments that last long. They find love quickly. 
+
+// However, they carry a highly sensitive personality and they are also emotional. They like to be around friends and society and they also relish the finer things in life. 
+
+// People with soul urge number 2 need safety and comfort. So they carry a sophisticated taste and appreciate exotic items. They possess excellent musical talent and are also driven towards music. 
+
+// They are sensitive and diplomatic. They like to slowly influence people to match their point of view. 
+
+
+
+// 3. Soul Urge Number 3
+// If you belong to soul urge number 3 then you have a young, carefree spirit. You have a positive outlook on life and strive to spread that feeling of cheer and vitality to others. 
+
+// Your instincts are so soft that you need help realising that you can’t change the outcome of events on your own. There is no doubt, though, that you can make a difference in people’s lives and brighten their day. 
+
+// You find fulfilment in performing, and achieving fame would bring you much joy. No matter what you do, sceptics will appear. 
+
+// You need to develop the ability to recognise constructive criticism and ignore meaningless praise. As a result, you will have much greater success. 
+
+
+
+// 4. Soul Urge Number 4
+// Is order more appealing to you than chaos? Is stability something you seek, and do you find a change to be difficult? 
+
+// Do you get a lot of personal fulfilment from making progress toward an aim? It means the vowels in your name add up to make the soul number 4. 
+
+// The importance of moderation and organisation in your daily life cannot be overstated. You prefer to stay within established parameters and follow all established norms. 
+
+// As a result of your beliefs, you avoid taking any risks in life and are therefore stereotyped as being rather dull. For you, there is no middle ground; it is either black or white for you. 
+
+// Excellently inspiring others through your own self-control and diligence, you are a true role model. You have a rational, measured, and practical outlook on any given situation. 
+
+// You’ll be an asset to any company due to this. Don’t let your need for order restrict your relationships with your partner or your kids.
+
+// 5. Soul Urge Number 5
+// Persons with soul urge number 5 are fun to be with. They have a happy and jolly vibe. According to numerology, people with the soul urge number 5 are seekers and they like to explore world life experiences. 
+
+// They do not like to be restricted and hence you will spot them not sticking to job roles that restrict their creativity or stop them from experimenting. 
+
+// At an early age, they always want to seek pleasures and delights to feel pumped up and alive. However, when they are old, they stop having such emotions and simulations. 
+
+// As they grow old, they start looking for deeper meanings in life. If they want to discover more and find the purpose of their life, they are more likely to follow spiritual masters. 
+
+// 6. Soul Urge Number 6
+// They are very different from other personalities and are known to have paternal and maternal behaviours. They are very caring, supportive, and nurturing in nature. 
+
+// People with soul urge number 6 often feel the responsibility of taking care of everything and they are also concerned about the well-being of others.
+
+
+// 7. Soul Urge Number 7
+// If you are more inclined towards books and knowledge, the vowels in your name may count as the numerological number 7. You are known to be nerdy, intellectual and a bookworm. 
+
+// You believe in gaining knowledge and reading books more than the people you are surrounded by. 
+
+// If your soul urge number is 7, you are likely to have an impressive grasping power and you can catch information, and skills better than other people. 
+
+// They often have more books as compared to the number of people in their life.
+
+// 8. Soul Urge Number 8
+// People with soul urge number 8 tend to be more materialistic. Their interests can be anything from money, power, and wealth to legal matters. You might feel more driven than average to achieve success. 
+
+// The very essence of your being yearns for presence in the physical world. However, it’s easy to lose perspective if your main goal in life is to collect wealth. 
+
+// Your ambition and drive can get you far in life, but they can also lead you to do some pretty crazy things. You may be good at making money, but you might also easily waste it.
+
+// If you want to be happy, you have to strike a balance between your individual goals and the greater good.
+
+// 9. Soul Urge Number 9
+// Those with soul urge number 9 value perfection and strive for perfection. You put a lot of effort into the smallest of details as you strive for perfection in every area of your life, for the betterment of the world at large, and for the betterment of your own. 
+
+// You’ve always been fascinated by human nature and have studied it all your life. You have above-average intuition but only a mediocre capacity for judging people’s motives and intentions. 
+
+// You also need a little guidance if you think that everyone else values the same things you do. 
+
+// Whether it be monetary, physical, or emotional, you wish you had the means to quickly end the suffering of others. You possess a perceptive mind and a wealth of information.
+
+// 10. Soul Urge Number 11
+// The uniqueness of the number serves as a reminder that for these people that they are also one of a kind. 
+
+// They are big on hope and ambition, but they also know that it’s important to keep in mind that everything is interconnected on some level with the spiritual aspects of life.
+
+// 10. Soul Urge Number 22
+// You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so. 
+
+// You see things from a unique perspective, and that helps encourage others to take action and achieve their goals. 
+
+// Even though you’re grounded in reality, you have high aspirations. People feel at ease and safe in your presence. 
+
+// Therefore, you possess inherent strengths as a manager, leader, and organiser. Helping others and seeing that help bring results will fulfil your life’s purpose.
+
+// 11. Soul Urge Number 33
+// The number 33 is the most unique of all and it is the ‘master teacher’.
+
+// This number matches the qualities of the soul urge number 6; meaning, they are nurturing and loving. 
+
+// If this is your life path number, you are loyal and patient. You are a patient listener who readily forgives others and who looks for the best in everyone. 
+
+// It’s not uncommon for you to prioritise the wants of others over your own (sometimes to your detriment). 
+
+// You try to find good and harmony in everything. You find great joy in creative pursuits and so naturally gravitate toward the arts. 
+
+// It’s true that you have many gifts, but the path of soul urge 33 isn’t always smooth sailing. Until you’re 35, you might not realise the full extent of your skills. 

@@ -1,0 +1,52 @@
+{
+  "Personality Numbers": {
+    "1": {
+      "description": "Those born with Personality number 1 are here to pave the way forward with focus and dedication.",
+      "traits": ["Loyal", "Trailblazer", "Dignified"]
+    },
+    "2": {
+      "description": "Personality number 2 individuals are amiable peacemakers and often interested in working with others in an effort towards camaraderie.",
+      "traits": ["Trustworthy", "Approachable", "Helpful"]
+    },
+    "3": {
+      "description": "The Personality number 3 individual shines like a star, inspiring those around them to tap into their own unique expression.",
+      "traits": ["Charming", "Romantic", "Prosperous"]
+    },
+    "4": {
+      "description": "Personality number 4 people often display great depth of character, especially when it comes to their careers.",
+      "traits": ["Good judgment", "Strategist", "Hard-worker"]
+    },
+    "5": {
+      "description": "Those born with Personality number 5 are often considered to be the life of the party due to their charisma, wit, and positive nature.",
+      "traits": ["Optimistic", "Magnetic", "Witty"]
+    },
+    "6": {
+      "description": "Personality number 6 individuals are known for their caring, giving nature, as they are often sensitive to the needs of others.",
+      "traits": ["Empathic", "Faithful", "Protective"]
+    },
+    "7": {
+      "description": "Those born with Personality number 7 are here to uncover personal truths, often going against social norms with the intention of finding the true self.",
+      "traits": ["Seeker", "Self-sufficient", "Unique"]
+    },
+    "8": {
+      "description": "Personality number 8 individuals are powerhouses who know how to use their energy productively and effectively.",
+      "traits": ["Inner strength", "Generous", "Discerning"]
+    },
+    "9": {
+      "description": "Those born with Personality number 9 are here to implement the many lessons they’ve learned in an effort to inspire and uplift humanity.",
+      "traits": ["Talented", "Giver", "Inventive"]
+    },
+    "11": {
+      "description": "Those born with Personality number 11 are known for their ability to balance their intuitive abilities with their practical nature.",
+      "traits": ["Intuitive", "Gentle", "Sensible"]
+    },
+    "22": {
+      "description": "Since 22 is known as the 'Master Builder,' those born with this Personality number are here to make solid and lasting changes.",
+      "traits": ["Constructive", "Committed", "Trustworthy"]
+    },
+    "33": {
+      "description": "Those born with Personality number 33 are caring beyond measure, striving to bring peace and balance into the world.",
+      "traits": ["Compassionate", "Harmonious", "Wise"]
+    }
+  }
+}
