@@ -1,3 +1,21 @@
 {
-	"siteId": "7416d98a-efbb-4c99-a339-66434f768387"
+	"siteId": "7416d98a-efbb-4c99-a339-66434f768387",
+	"geolocation": {
+		"data": {
+			"city": "Knoxville",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "TN",
+				"name": "Tennessee"
+			},
+			"timezone": "America/New_York",
+			"latitude": 36.0499,
+			"longitude": -83.9228,
+			"postalCode": "37918"
+		},
+		"timestamp": 1749392235110
+	}
 }

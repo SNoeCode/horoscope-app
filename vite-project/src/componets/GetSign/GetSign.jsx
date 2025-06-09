@@ -1,5 +1,22 @@
 import React, { useState } from "react";
+import zodiacData from "../../data/zodiacData.json";
+import "./GetSign.css";
+
 // Make sure to import or define zodiacSigns, piscesData, styles somewhere above this component
+const zodiacSigns = [
+  { name: "Aries", dates: [3, 21, 4, 19], symbol: "♈" },
+  { name: "Taurus", dates: [4, 20, 5, 20], symbol: "♉" },
+  { name: "Gemini", dates: [5, 21, 6, 20], symbol: "♊" },
+  { name: "Cancer", dates: [6, 21, 7, 22], symbol: "♋" },
+  { name: "Leo", dates: [7, 23, 8, 22], symbol: "♌" },
+  { name: "Virgo", dates: [8, 23, 9, 22], symbol: "♍" },
+  { name: "Libra", dates: [9, 23, 10, 22], symbol: "♎" },
+  { name: "Scorpio", dates: [10, 23, 11, 21], symbol: "♏" },
+  { name: "Sagittarius", dates: [11, 22, 12, 21], symbol: "♐" },
+  { name: "Capricorn", dates: [12, 22, 1, 19], symbol: "♑" },
+  { name: "Aquarius", dates: [1, 20, 2, 18], symbol: "♒" },
+  { name: "Pisces", dates: [2, 19, 3, 20], symbol: "♓" },
+];
 
 const GetSign = () => {
   const [birthday, setBirthday] = useState({ day: "", month: "", year: "" });
@@ -35,8 +52,10 @@ const GetSign = () => {
   };
 
   const handleSignClick = (signName) => {
-    if (signName === "Pisces") {
-      setSelectedSign(piscesData);
+    const signKey = signName.toLowerCase();
+    const signData = zodiacData[signKey];
+    if (signData) {
+      setSelectedSign(signData);
     } else {
       setSelectedSign({
         sign: signName,
@@ -48,21 +67,21 @@ const GetSign = () => {
   const matchedSign = getZodiacSign(birthday.day, birthday.month);
 
   return (
-    <div style={styles.astrologyApp}>
-      <header style={styles.appHeader}>
-        <h1 style={styles.appTitle}>✨ Astrology Signs Explorer ✨</h1>
-        <p style={styles.appSubtitle}>
+    <div className="astrology-app">
+      <header className="app-header">
+        <h1 className="app-title">✨ Astrology Signs Explorer ✨</h1>
+        <p className="app-subtitle">
           Discover your zodiac sign and personality traits
         </p>
       </header>
 
-      <div style={styles.birthdaySection}>
-        <h2 style={styles.birthdayTitle}>Enter Your Birthday</h2>
-        <div style={styles.birthdayInputs}>
-          <div style={styles.inputGroup}>
-            <label style={styles.inputLabel}>Day</label>
+      <div className="birthday-section">
+        <h2 className="birthday-title">Enter Your Birthday</h2>
+        <div className="birthday-inputs">
+          <div className="input-group">
+            <label className="input-label">Day</label>
             <input
-              style={styles.inputField}
+              className="input-field"
               type="number"
               min="1"
               max="31"
@@ -71,10 +90,10 @@ const GetSign = () => {
               placeholder="DD"
             />
           </div>
-          <div style={styles.inputGroup}>
-            <label style={styles.inputLabel}>Month</label>
+          <div className="input-group">
+            <label className="input-label">Month</label>
             <input
-              style={styles.inputField}
+              className="input-field"
               type="number"
               min="1"
               max="12"
@@ -83,10 +102,10 @@ const GetSign = () => {
               placeholder="MM"
             />
           </div>
-          <div style={styles.inputGroup}>
-            <label style={styles.inputLabel}>Year</label>
+          <div className="input-group">
+            <label className="input-label">Year</label>
             <input
-              style={styles.inputField}
+              className="input-field"
               type="number"
               min="1900"
               max="2025"
@@ -97,21 +116,13 @@ const GetSign = () => {
           </div>
         </div>
         {matchedSign && (
-          <div style={styles.matchedSign}>
-            <p style={styles.matchedText}>
+          <div className="matched-sign">
+            <p className="matched-text">
               Your zodiac sign is: <strong>{matchedSign}</strong>
             </p>
             <button
-              style={styles.viewDetailsBtn}
+              className="view-details-btn"
               onClick={() => handleSignClick(matchedSign)}
-              onMouseOver={(e) => {
-                e.target.style.background = "white";
-                e.target.style.color = "#667eea";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.background = "rgba(255, 255, 255, 0.2)";
-                e.target.style.color = "white";
-              }}
             >
               View Details
             </button>
@@ -119,124 +130,86 @@ const GetSign = () => {
         )}
       </div>
 
-      <div style={styles.zodiacGrid}>
+      <div className="zodiac-grid">
         {zodiacSigns.map((sign) => (
           <div
             key={sign.name}
-            style={{
-              ...styles.zodiacCard,
-              ...(matchedSign === sign.name ? styles.zodiacCardMatched : {}),
-            }}
+            className={`zodiac-card ${matchedSign === sign.name ? 'zodiac-card-matched' : ''}`}
             onClick={() => handleSignClick(sign.name)}
-            onMouseOver={(e) => {
-              if (matchedSign !== sign.name) {
-                e.target.style.transform = "translateY(-10px) scale(1.05)";
-                e.target.style.background =
-                  "linear-gradient(45deg, #667eea, #764ba2)";
-                e.target.style.color = "white";
-              }
-            }}
-            onMouseOut={(e) => {
-              if (matchedSign !== sign.name) {
-                e.target.style.transform = "translateY(0) scale(1)";
-                e.target.style.background = "rgba(255, 255, 255, 0.95)";
-                e.target.style.color = "#000";
-              }
-            }}
           >
-            <div style={styles.zodiacSymbol}>{sign.symbol}</div>
-            <h3 style={styles.zodiacName}>{sign.name}</h3>
+            <div className="zodiac-symbol">{sign.symbol}</div>
+            <h3 className="zodiac-name">{sign.name}</h3>
           </div>
         ))}
       </div>
 
       {selectedSign && (
-        <div style={styles.signDetails}>
-          <div style={styles.detailsHeader}>
-            <h2 style={styles.detailsTitle}>
+        <div className="sign-details">
+          <div className="details-header">
+            <h2 className="details-title">
               {selectedSign.symbol} {selectedSign.sign}
             </h2>
             <button
-              style={styles.closeBtn}
+              className="close-btn"
               onClick={() => setSelectedSign(null)}
-              onMouseOver={(e) => {
-                e.target.style.background = "#c0392b";
-                e.target.style.transform = "scale(1.1)";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.background = "#e74c3c";
-                e.target.style.transform = "scale(1)";
-              }}
             >
               ×
             </button>
           </div>
 
-          {selectedSign.sign === "Pisces" ? (
+           {selectedSign && selectedSign.personality ? (
             <div>
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Basic Info</h3>
-                <p style={styles.sectionText}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Basic Info</h3>
+                <p className="section-text">
                   <strong>Element:</strong> {selectedSign.element}
                 </p>
-                <p style={styles.sectionText}>
+                <p className="section-text">
                   <strong>Quality:</strong> {selectedSign.quality}
                 </p>
-                <p style={styles.sectionText}>
+                <p className="section-text">
                   <strong>Ruling Planet:</strong> {selectedSign.rulingPlanet}
                 </p>
-                <p style={styles.sectionText}>
+                <p className="section-text">
                   <strong>Dates:</strong> {selectedSign.dates}
                 </p>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Personality Overview</h3>
-                <p style={styles.sectionText}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Personality Overview</h3>
+                <p className="section-text">
                   {selectedSign.personality.overview}
                 </p>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Core Traits</h3>
-                <div style={styles.traitsGrid}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Core Traits</h3>
+                <div className="traits-grid">
                   {selectedSign.personality.coreTraits.map((trait, index) => (
-                    <span key={index} style={styles.traitTag}>
+                    <span key={index} className="trait-tag">
                       {trait}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Strengths</h3>
-                <ul style={styles.list}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Strengths</h3>
+                <ul className="list">
                   {selectedSign.personality.strengths.map((strength, index) => (
-                    <li
-                      key={index}
-                      style={{
-                        ...styles.listItem,
-                        "::before": { content: "🌟" },
-                      }}
-                    >
+                    <li key={index} className="list-item">
                       🌟 {strength}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Challenges</h3>
-                <ul style={styles.list}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Challenges</h3>
+                <ul className="list">
                   {selectedSign.personality.weaknesses.map(
                     (weakness, index) => (
-                      <li
-                        key={index}
-                        style={{
-                          ...styles.listItem,
-                          "::before": { content: "🌟" },
-                        }}
-                      >
+                      <li key={index} className="list-item">
                         🌟 {weakness}
                       </li>
                     )
@@ -244,15 +217,15 @@ const GetSign = () => {
                 </ul>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Career Paths</h3>
-                <p style={styles.sectionText}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Career Paths</h3>
+                <p className="section-text">
                   <strong>Work Style:</strong> {selectedSign.careers.workStyle}
                 </p>
-                <div style={styles.careerList}>
+                <div className="career-list">
                   {selectedSign.careers.idealOccupations.map(
                     (career, index) => (
-                      <span key={index} style={styles.careerTag}>
+                      <span key={index} className="career-tag">
                         {career}
                       </span>
                     )
@@ -260,41 +233,41 @@ const GetSign = () => {
                 </div>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Relationships</h3>
-                <p style={styles.sectionText}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Relationships</h3>
+                <p className="section-text">
                   <strong>Love Style:</strong>{" "}
                   {selectedSign.relationships.loveStyle}
                 </p>
-                <p style={styles.sectionText}>
+                <p className="section-text">
                   <strong>Best Matches:</strong>{" "}
                   {selectedSign.relationships.bestMatches.join(", ")}
                 </p>
-                <p style={styles.sectionText}>
+                <p className="section-text">
                   <strong>Challenging Matches:</strong>{" "}
                   {selectedSign.relationships.challenging.join(", ")}
                 </p>
               </div>
 
-              <div style={styles.detailSection}>
-                <h3 style={styles.sectionTitle}>✨ Health & Wellness</h3>
-                <div style={styles.healthGrid}>
+              <div className="detail-section">
+                <h3 className="section-title">✨ Health & Wellness</h3>
+                <div className="health-grid">
                   <div>
-                    <h4 style={styles.sectionSubtitle}>Strengths</h4>
-                    <ul style={styles.list}>
+                    <h4 className="section-subtitle">Strengths</h4>
+                    <ul className="list">
                       {selectedSign.health.strengths.map((strength, index) => (
-                        <li key={index} style={styles.listItem}>
+                        <li key={index} className="list-item">
                           🌟 {strength}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 style={styles.sectionSubtitle}>Vulnerabilities</h4>
-                    <ul style={styles.list}>
+                    <h4 className="section-subtitle">Vulnerabilities</h4>
+                    <ul className="list">
                       {selectedSign.health.vulnerabilities.map(
                         (vulnerability, index) => (
-                          <li key={index} style={styles.listItem}>
+                          <li key={index} className="list-item">
                             🌟 {vulnerability}
                           </li>
                         )
@@ -303,10 +276,10 @@ const GetSign = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 style={styles.sectionSubtitle}>Recommendations</h4>
-                  <ul style={styles.list}>
+                  <h4 className="section-subtitle">Recommendations</h4>
+                  <ul className="list">
                     {selectedSign.health.recommendations.map((rec, index) => (
-                      <li key={index} style={styles.listItem}>
+                      <li key={index} className="list-item">
                         🌟 {rec}
                       </li>
                     ))}
@@ -315,11 +288,11 @@ const GetSign = () => {
               </div>
             </div>
           ) : (
-            <div style={styles.basicSignInfo}>
-              <p style={styles.basicInfoText}>
+            <div className="basic-sign-info">
+              <p className="basic-info-text">
                 Detailed information available for Pisces only.
               </p>
-              <p style={styles.basicInfoText}>
+              <p className="basic-info-text">
                 Click on Pisces to see full personality profile!
               </p>
             </div>

@@ -1,0 +1,182 @@
+.numerology-hub {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  color: white;
+}
+
+.hub-header {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hub-title {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #e6e6fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hub-subtitle {
+  font-size: 1.2em;
+  line-height: 1.6;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.numerology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+
+.numerology-card {
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.numerology-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card-title {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-description {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.card-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.card-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.hub-info {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hub-info h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hub-info p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .numerology-hub {
+    padding: 20px 15px;
+  }
+  
+  .hub-title {
+    font-size: 2.5em;
+  }
+  
+  .hub-subtitle {
+    font-size: 1.1em;
+  }
+  
+  .numerology-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .numerology-card {
+    padding: 30px 20px;
+  }
+  
+  .card-icon {
+    font-size: 3em;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+  }
+  
+  .hub-info {
+    padding: 30px 20px;
+  }
+  
+  .hub-info h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hub-title {
+    font-size: 2em;
+  }
+  
+  .numerology-grid {
+    gap: 15px;
+  }
+  
+  .numerology-card {
+    padding: 25px 15px;
+  }
+  
+  .card-icon {
+    font-size: 2.5em;
+  }
+  
+  .card-title {
+    font-size: 1.3em;
+  }
+  
+  .card-description {
+    font-size: 1em;
+  }
+}

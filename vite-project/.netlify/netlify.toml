@@ -4,14 +4,10 @@ plugins = []
 headers = []
 redirects = []
 
-[functions]
-
-[functions."*"]
-
 [build]
-publish = "C:\\Users\\snoep_a5dedf8\\Desktop\\SHANNACHRISTINE\\snoep\\Shanna Noe\\Desktop\\dev\\horoscope-app\\vite-project\\vite-project\\dist"
-publishOrigin = "config"
-commandOrigin = "config"
+publish = "C:\\Users\\snoep_a5dedf8\\Desktop\\SHANNACHRISTINE\\snoep\\Shanna Noe\\Desktop\\dev\\horoscope-app\\vite-project\\dist"
+publishOrigin = "ui"
+commandOrigin = "ui"
 base = "C:\\Users\\snoep_a5dedf8\\Desktop\\SHANNACHRISTINE\\snoep\\Shanna Noe\\Desktop\\dev\\horoscope-app\\vite-project"
 command = "npm run build"
 functions = "C:\\Users\\snoep_a5dedf8\\Desktop\\SHANNACHRISTINE\\snoep\\Shanna Noe\\Desktop\\dev\\horoscope-app\\vite-project\\netlify\\functions"
@@ -29,3 +25,7 @@ functions = "C:\\Users\\snoep_a5dedf8\\Desktop\\SHANNACHRISTINE\\snoep\\Shanna N
 [build.processing.js]
 
 [build.services]
+
+[functions]
+
+[functions."*"]

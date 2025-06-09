@@ -10,6 +10,35 @@
         "Expression": "The primal force: Individualistic, independent, leadership and drive.",
         "Soul Urge": "This number signifies self-sufficiency and independence. Individuals with soul urge number 1 are known to be great leaders.",
         "Quick Overview": "Leadership, independence, pioneering spirit"
+      },
+      "lifepaths": {
+        "name": "The Leader",
+        "description": "Life Path 1 individuals are natural-born leaders. You crave independence and value your freedom in both work and relationships. You have a determined and strong-willed nature, but sometimes this makes you a bit stubborn. Leadership is in your blood.",
+        "Strengths": [
+          "Natural-born leaders",
+          "Independent",
+          "Original thinkers",
+          "Innovative",
+          "Creative",
+          "Determined",
+          "Inspired",
+          "Courageous",
+          "Dependable",
+          "Resourceful"
+        ],
+        "Challenges": [
+          "Can be narcissistic when out of alignment",
+          "Overprotective",
+          "Intolerant",
+          "Domineering",
+          "Insecure",
+          "Helpless",
+          "Victimized",
+          "Wishy-washy",
+          "Lack of self-respect",
+          "Not good at finishing things",
+          "Struggles with criticism"
+        ]
       }
     },
     "2": {
@@ -21,6 +50,36 @@
       "Destiny Number": {
         "Expression": "The all-knowing: Sensitive, tactful, diplomatic and cooperative.",
         "Quick Overview": "Cooperation, sensitivity, diplomacy"
+      },
+      "lifepaths": {
+        "name": "The Empath",
+        "description": "Life Path 2 people are empathetic and deeply connected to the emotions of others. While you may seem sensitive, you possess a strong inner core. You are a wonderful friend, counselor, or mediator. People appreciate your open-mindedness and kind heart.",
+        "Strengths": [
+          "Sensitive",
+          "Supportive",
+          "Diplomatic",
+          "Patient",
+          "Cooperative",
+          "Detail-oriented",
+          "Intuitive",
+          "Kind",
+          "Understanding",
+          "Excellent managers and mediators"
+        ],
+        "Challenges": [
+          "Careless",
+          "Indecisive",
+          "Shy",
+          "Resentful",
+          "Narrow-minded",
+          "Timid",
+          "Insecure",
+          "Confused",
+          "Moody",
+          "Easily offended",
+          "Struggles with emotions",
+          "May have narcissistic tendencies"
+        ]
       }
     },
     "3": {
@@ -32,6 +91,31 @@
       "Destiny Number": {
         "Expression": "The creative child; imaginative, expressive communicators and artists.",
         "Quick Overview": "Creativity, self-expression, sociability"
+      },
+      "lifepaths": {
+        "name": "The Creative",
+        "description": "As a Life Path 3, creativity is your lifeblood. Whether through art, music, or performance, you are constantly expressing yourself and inspiring others. Your natural charisma and creativity will lead the way.",
+        "Strengths": [
+          "Excellent communicators",
+          "Joyful",
+          "Artistic",
+          "Outgoing",
+          "Cheerful",
+          "Enthusiastic",
+          "Charming",
+          "Able to spark joy in others"
+        ],
+        "Challenges": [
+          "Tendency to worry",
+          "Lack of concentration and focus",
+          "Easily distracted",
+          "Bad work ethic",
+          "Jealousy",
+          "Criticism",
+          "Prone to stirring up drama",
+          "May struggle with anxiety and depression",
+          "Isolation during tough times"
+        ]
       }
     },
     "4": {
@@ -43,6 +127,30 @@
       "Destiny Number": {
         "Expression": "A rock for everyone to lean on.",
         "Quick Overview": "Practicality, hard work, reliability"
+      },
+      "lifepath": {
+        "name": "The Planner",
+        "description": "Practical and grounded, Life Path 4 individuals are highly organized and have a strong sense of duty. With a solid plan for the future, you excel in structured environments and stick to your principles.",
+        "Strengths": [
+          "Reliable",
+          "Loyal",
+          "Diligent workers",
+          "Practical",
+          "Accurate",
+          "Straightforward",
+          "Conscientious",
+          "Seek security and stability",
+          "Value home, family, and friends"
+        ],
+        "Challenges": [
+          "Bossy",
+          "Rigid",
+          "Humorless",
+          "Argumentative",
+          "Resistant to innovation",
+          "Perfectionism",
+          "Workaholic tendencies"
+        ]
       }
     },
     "5": {
@@ -54,6 +162,36 @@
       "Destiny Number": {
         "Expression": "A dynamic force: Energetic, adventurous, daring and freedom-loving.",
         "Quick Overview": "Freedom, adventure, change"
+      },
+      "lifepaths": {
+        "name": "The Communicator",
+        "description": "If you are a Life Path 5, you are an adventurer at heart who loves freedom. Communication comes naturally to you, and your energy is infectious. You inspire others with your persuasive nature.",
+        "Strengths": [
+          "Curious",
+          "Resilient",
+          "Fearless",
+          "Flexible",
+          "Fun",
+          "Social",
+          "Love change and adventure",
+          "Magnetic",
+          "Witty",
+          "Brave",
+          "Dynamic",
+          "Entertaining",
+          "Seek new experiences"
+        ],
+        "Challenges": [
+          "Uncertain",
+          "Indecisive",
+          "Impulsive",
+          "Careless",
+          "Easily overwhelmed",
+          "Restless",
+          "Procrastination",
+          "Lack of follow-through",
+          "Prone to excess"
+        ]
       }
     },
     "6": {
@@ -65,6 +203,33 @@
       "Destiny Number": {
         "Expression": "The caretaker: Responsible, loving, self-sacrificing, protective, sympathetic and compassionate.",
         "Quick Overview": "Responsibility, nurturing, community service"
+      },
+      "lifepaths": {
+        "name": "The Supporter",
+        "description": "People born under Life Path 6 are caregivers. Your compassionate personality makes you someone people can rely on, often guiding others with wisdom and empathy.",
+        "Strengths": [
+          "Comforting",
+          "Uplifting",
+          "Giving advice",
+          "Adore family",
+          "Honorable",
+          "Make great friends",
+          "Poised",
+          "Nurturing",
+          "Artistic",
+          "Romantic",
+          "Devoted",
+          "Sensible"
+        ],
+        "Challenges": [
+          "Perfectionistic",
+          "Critical",
+          "Idealistic to a fault",
+          "Self-righteous",
+          "Meddlesome",
+          "Indulgent",
+          "Self-absorbed"
+        ]
       }
     },
     "7": {
@@ -76,6 +241,31 @@
       "Destiny Number": {
         "Expression": "The seeker; spiritual, intelligent, analytical, focused, introspective.",
         "Quick Overview": "Introspection, spirituality, analysis"
+      },
+      "lifepaths": {
+        "name": "The Thinker",
+        "description": "If you’re a Life Path 7, you are driven by an internal quest for truth and knowledge. You enjoy investigating life’s mysteries and are deeply introspective, always seeking answers.",
+        "Strengths": [
+          "Insightful",
+          "Intellectual",
+          "Serene",
+          "Private",
+          "Value history and nature",
+          "Seek deeper universal truths",
+          "Creative",
+          "Truth seekers",
+          "Analytical"
+        ],
+        "Challenges": [
+          "Detached",
+          "Unemotional",
+          "Pessimistic",
+          "Withdrawn",
+          "Nervous",
+          "Aloof",
+          "Repressed emotionally",
+          "Can be deceitful"
+        ]
       }
     },
     "8": {
@@ -87,6 +277,32 @@
       "Destiny Number": {
         "Expression": "Balance and power: Authoritative, business-minded, balanced, materially detached, successful and realistic.",
         "Quick Overview": "Ambition, power, material success"
+      },
+      "lifestyle": {
+        "name": "The Pragmatist",
+        "description": "Life Path 8 people are ambitious and goal-oriented. You have a strong desire for success and financial stability, often drawn to careers that offer rewards for hard work.",
+        "Strengths": [
+          "Powerful",
+          "Authoritative",
+          "Energetic",
+          "Honorable",
+          "Confident",
+          "Dependable",
+          "Goal-oriented",
+          "Inspirational",
+          "Great leaders"
+        ],
+        "Challenges": [
+          "Materialistic",
+          "Thoughtless",
+          "Controlling",
+          "Careless with money",
+          "Egotistical",
+          "Scheming",
+          "Impatient",
+          "Worry about powerlessness",
+          "Financial insecurity concerns"
+        ]
       }
     },
     "9": {
@@ -98,42 +314,78 @@
       "Destiny Number": {
         "Expression": "Global awareness: Helpful, compassionate, aristocratic, sophisticated, charitable.",
         "Quick Overview": "Compassion, humanitarianism, altruism"
+      },
+      "lifepaths": {
+        "name": "The Humanitarian",
+        "description": "As a Life Path 9, you are driven by a desire to help others and make the world a better place. You see the bigger picture and are motivated by causes larger than yourself.",
+        "Strengths": [
+          "Embodiment of unconditional love",
+          "Open-minded",
+          "Creative",
+          "Romantic",
+          "Empathetic",
+          "Magnetic",
+          "Humanitarian",
+          "Charitable",
+          "Kind",
+          "Idealistic"
+        ],
+        "Challenges": [
+          "Struggles with letting go",
+          "Extremely sensitive",
+          "Resentful",
+          "Cautious",
+          "Nervous",
+          "Gullible",
+          "Easily used by others",
+          "Pessimistic about the world and future"
+        ]
       }
     },
-       "11": {
+    "11": {
       "Soul Number": "The uniqueness of the number serves as a reminder that for these people that they are also one of a kind.\n\nThey are big on hope and ambition, but they also know that it’s important to keep in mind that everything is interconnected on some level with the spiritual aspects of life.",
-        "Personality Number": {
-      "description": "Those born with Personality number 11 are known for their ability to balance their intuitive abilities with their practical nature.",
-      "traits": ["Intuitive", "Gentle", "Sensible"]
+      "Personality Number": {
+        "description": "Those born with Personality number 11 are known for their ability to balance their intuitive abilities with their practical nature.",
+        "traits": ["Intuitive", "Gentle", "Sensible"]
       },
       "Destiny Number": {
         "Expression": "Global awareness: Helpful, compassionate, aristocratic, sophisticated, charitable.",
         "Quick Overview": "Compassion, humanitarianism, altruism"
-      }
-
-    },
-      "22": {
-      "Soul Number":  "You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.",
-        "Personality Number": {
-           "description": "Since 22 is known as the 'Master Builder,' those born with this Personality number are here to make solid and lasting changes.",
-      "traits": ["Constructive", "Committed", "Trustworthy"]
       },
-      "Destiny Number": {
-        "Expression": "Global awareness: Helpful, compassionate, aristocratic, sophisticated, charitable.",
-        "Quick Overview": "Compassion, humanitarianism, altruism"
+      "lifepaths": {
+        "name": "The Visionary",
+        "description": "Life Path 11 individuals possess strong intuition and often serve as sources of inspiration. You are destined to be a visionary, always seeking the next great project or cause."
       }
     },
-     "33": {
-      "Soul Number":  "You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.",
-        "Personality Number": {
-           "description": "Those born with Personality number 33 are caring beyond measure, striving to bring peace and balance into the world.",
-      "traits": ["Compassionate", "Harmonious", "Wise"]
+    "22": {
+      "Soul Number": "You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.",
+      "Personality Number": {
+        "description": "Since 22 is known as the 'Master Builder,' those born with this Personality number are here to make solid and lasting changes.",
+        "traits": ["Constructive", "Committed", "Trustworthy"]
       },
       "Destiny Number": {
         "Expression": "Global awareness: Helpful, compassionate, aristocratic, sophisticated, charitable.",
         "Quick Overview": "Compassion, humanitarianism, altruism"
+      },
+      "lifepaths": {
+        "name": "The Master Builder",
+        "description": "Life Path 22 is known as the 'Master Builder' and represents great success. You have the potential to leave a lasting legacy, overcoming challenges along the way."
+      }
+    },
+    "33": {
+      "Soul Number": "You wish to see the world drastically changed. It’s clear that you can see the future you want and are actively working to make it so.\n\nYou see things from a unique perspective, and that helps encourage others to take action and achieve their goals.",
+      "Personality Number": {
+        "description": "Those born with Personality number 33 are caring beyond measure, striving to bring peace and balance into the world.",
+        "traits": ["Compassionate", "Harmonious", "Wise"]
+      },
+      "Destiny Number": {
+        "Expression": "Global awareness: Helpful, compassionate, aristocratic, sophisticated, charitable.",
+        "Quick Overview": "Compassion, humanitarianism, altruism"
+      },
+      "lifepaths": {
+        "name": "The Teacher",
+        "description": "As a Life Path 33, you are among the most powerful and influential of all life path numbers. You radiate warmth and compassion, naturally guiding others as a mentor or teacher."
       }
     }
-
   }
 }
