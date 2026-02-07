@@ -1,0 +1,78 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+*.whl
+.pytest_cache
+.coverage
+htmlcov
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+README.md
+QUICKSTART.md
+*.md
+
+# Test files
+test_*
+*_test.py
+tests/
+__tests__/
+
+# Cache
+.cache
+*.log
+*.pid
+cache/
+.npm
+.yarn
+
+# Build artifacts
+dist
+build
+out
+coverage
+
+# Misc
+*.zip
+*.tar
+*.gz
+.tmp
+temp
