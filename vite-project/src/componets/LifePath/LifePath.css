@@ -262,7 +262,7 @@
 .loading-spinner {
   text-align: center;
   padding: 50px;
-  color: white;
+  color: var(--text-primary);
 }
 
 .cosmic-loader {
@@ -279,7 +279,7 @@
 .no-data {
   text-align: center;
   padding: 50px;
-  color: white;
+  color: var(--text-primary);
 }
 
 .no-data h3 {
@@ -333,7 +333,7 @@
   min-height: 100vh;
   padding: 20px;
   font-family: 'Arial', sans-serif;
-  color: #fff;
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -424,7 +424,7 @@
 .strength-card,
 .challenge-item {
   background: #4b0082;
-  color: white;
+  color: var(--text-primary);
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 0.9rem;

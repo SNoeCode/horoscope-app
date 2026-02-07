@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
 """
-Cafe Astrology Horoscope Scraper
-Scrapes daily horoscopes for all zodiac signs from cafeastrology.com
+Cafe Astrology Horoscope Scraper - Enhanced Version
+Scrapes daily, monthly, and yearly horoscopes for all zodiac signs from cafeastrology.com
 """
 
+import os
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -14,11 +14,12 @@ import re
 
 
 class HoroscopeScraper:
-    """Scraper for Cafe Astrology daily horoscopes"""
+    """Enhanced scraper for Cafe Astrology horoscopes (daily, monthly, yearly)"""
     
     BASE_URL = "https://cafeastrology.com"
     
-    ZODIAC_SIGNS = {
+    # Daily horoscope URLs
+    DAILY_URLS = {
         'aries': '/ariesdailyhoroscope.html',
         'taurus': '/taurusdailyhoroscope.html',
         'gemini': '/geminidailyhoroscope.html',
@@ -31,6 +32,38 @@ class HoroscopeScraper:
         'capricorn': '/capricorndailyhoroscope.html',
         'aquarius': '/aquariusdailyhoroscope.html',
         'pisces': '/piscesdailyhoroscope.html'
+    }
+    
+    # Monthly horoscope URLs
+    MONTHLY_URLS = {
+        'aries': '/monthlyarieshoroscope.html',
+        'taurus': '/monthlytaurushoroscope.html',
+        'gemini': '/monthlygeminihoroscope.html',
+        'cancer': '/monthlycancerhoroscope.html',
+        'leo': '/monthlyleohoroscope.html',
+        'virgo': '/monthlyvirgohoroscope.html',
+        'libra': '/monthlylibrahoroscope.html',
+        'scorpio': '/monthlyscorpiohoroscope.html',
+        'sagittarius': '/monthlysagittariushoroscope.html',
+        'capricorn': '/monthlycapricornhoroscope.html',
+        'aquarius': '/monthlyaquariushoroscope.html',
+        'pisces': '/monthlypisceshoroscope.html'
+    }
+    
+    # Yearly horoscope URLs (2026)
+    YEARLY_URLS = {
+        'aries': '/2026-aries-horoscope-summary.html',
+        'taurus': '/2026-taurus-horoscope-summary.html',
+        'gemini': '/2026-gemini-horoscope-summary.html',
+        'cancer': '/2026-cancer-horoscope-summary.html',
+        'leo': '/2026-leo-horoscope-summary.html',
+        'virgo': '/2026-virgo-horoscope-summary.html',
+        'libra': '/2026-libra-horoscope-summary.html',
+        'scorpio': '/2026-scorpio-horoscope-summary.html',
+        'sagittarius': '/2026-sagittarius-horoscope-summary.html',
+        'capricorn': '/2026-capricorn-horoscope-summary.html',
+        'aquarius': '/2026-aquarius-horoscope-summary.html',
+        'pisces': '/2026-pisces-horoscope-summary.html'
     }
     
     def __init__(self, delay: float = 1.0):
@@ -64,9 +97,9 @@ class HoroscopeScraper:
             print(f"Error fetching {url}: {e}")
             return None
     
-    def extract_horoscope(self, soup: BeautifulSoup, sign: str) -> Optional[Dict]:
+    def extract_daily_horoscope(self, soup: BeautifulSoup, sign: str) -> Optional[Dict]:
         """
-        Extract horoscope data from the page
+        Extract daily horoscope data from the page
         
         Args:
             soup: BeautifulSoup object of the page
@@ -123,145 +156,244 @@ class HoroscopeScraper:
                     ratings['business'] = business_match.group(1)
             
             return {
-                'sign': sign.capitalize(),
                 'date': date_text or datetime.now().strftime('%B %d, %Y'),
-                'horoscope': horoscope_text or "Horoscope text not found",
+                'summary': horoscope_text or "Horoscope text not found",
                 'ratings': ratings,
                 'scraped_at': datetime.now().isoformat()
             }
             
         except Exception as e:
-            print(f"Error extracting horoscope for {sign}: {e}")
+            print(f"Error extracting daily horoscope for {sign}: {e}")
             return None
     
-    def scrape_sign(self, sign: str) -> Optional[Dict]:
+    def extract_monthly_horoscope(self, soup: BeautifulSoup, sign: str) -> Optional[Dict]:
         """
-        Scrape horoscope for a specific sign
+        Extract monthly horoscope data from the page
+        
+        Args:
+            soup: BeautifulSoup object of the page
+            sign: Zodiac sign name
+            
+        Returns:
+            Dictionary containing monthly horoscope data
+        """
+        try:
+            # Extract month/year
+            month_year = None
+            headings = soup.find_all(['h1', 'h2', 'h3'])
+            for h in headings:
+                text = h.get_text(strip=True)
+                # Look for pattern like "February 2026" or "Aries February 2026"
+                month_match = re.search(r'([A-Z][a-z]+\s+\d{4})', text)
+                if month_match:
+                    month_year = month_match.group(1)
+                    break
+            
+            # Collect all substantial paragraphs (monthly horoscopes are longer)
+            paragraphs = soup.find_all('p')
+            horoscope_sections = []
+            
+            for p in paragraphs:
+                text = p.get_text(strip=True)
+                # Monthly horoscopes have longer paragraphs
+                if len(text) > 150 and not text.startswith('See also'):
+                    # Filter out navigation and unrelated content
+                    if not any(skip in text.lower() for skip in ['click here', 'subscribe', 'advertisement', 'copyright']):
+                        horoscope_sections.append(text)
+            
+            # Take the first few substantial sections (usually the main horoscope content)
+            horoscope_text = '\n\n'.join(horoscope_sections[:5]) if horoscope_sections else "Monthly horoscope not found"
+            
+            return {
+                'period': month_year or datetime.now().strftime('%B %Y'),
+                'summary': horoscope_text,
+                'scraped_at': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            print(f"Error extracting monthly horoscope for {sign}: {e}")
+            return None
+    
+    def extract_yearly_horoscope(self, soup: BeautifulSoup, sign: str) -> Optional[Dict]:
+        """
+        Extract yearly horoscope data from the page
+        
+        Args:
+            soup: BeautifulSoup object of the page
+            sign: Zodiac sign name
+            
+        Returns:
+            Dictionary containing yearly horoscope data
+        """
+        try:
+            # Extract year
+            year = None
+            headings = soup.find_all(['h1', 'h2', 'h3'])
+            for h in headings:
+                text = h.get_text(strip=True)
+                # Look for year pattern
+                year_match = re.search(r'(\d{4})', text)
+                if year_match:
+                    year = year_match.group(1)
+                    break
+            
+            # Collect all substantial paragraphs (yearly horoscopes are very long)
+            paragraphs = soup.find_all('p')
+            horoscope_sections = []
+            
+            for p in paragraphs:
+                text = p.get_text(strip=True)
+                # Yearly horoscopes have many long paragraphs
+                if len(text) > 200:
+                    # Filter out navigation and unrelated content
+                    if not any(skip in text.lower() for skip in ['click here', 'subscribe', 'advertisement', 'copyright', 'see also:']):
+                        horoscope_sections.append(text)
+            
+            # Take the main horoscope sections (usually the first 10-15 paragraphs)
+            horoscope_text = '\n\n'.join(horoscope_sections[:10]) if horoscope_sections else "Yearly horoscope not found"
+            
+            # Look for overview section
+            overview = None
+            for p in paragraphs[:5]:  # Overview is usually near the top
+                text = p.get_text(strip=True)
+                if len(text) > 300:
+                    overview = text
+                    break
+            
+            return {
+                'year': year or '2026',
+                'overview': overview or horoscope_sections[0] if horoscope_sections else "Overview not found",
+                'summary': horoscope_text,
+                'scraped_at': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            print(f"Error extracting yearly horoscope for {sign}: {e}")
+            return None
+    
+    def scrape_sign(self, sign: str, horoscope_type: str = 'daily') -> Optional[Dict]:
+        """
+        Scrape horoscope for a specific sign and type
         
         Args:
             sign: Zodiac sign name (lowercase)
+            horoscope_type: Type of horoscope ('daily', 'monthly', 'yearly')
             
         Returns:
             Dictionary containing horoscope data
         """
-        if sign not in self.ZODIAC_SIGNS:
+        # Select the appropriate URL mapping
+        if horoscope_type == 'daily':
+            url_map = self.DAILY_URLS
+            extract_func = self.extract_daily_horoscope
+        elif horoscope_type == 'monthly':
+            url_map = self.MONTHLY_URLS
+            extract_func = self.extract_monthly_horoscope
+        elif horoscope_type == 'yearly':
+            url_map = self.YEARLY_URLS
+            extract_func = self.extract_yearly_horoscope
+        else:
+            print(f"Invalid horoscope type: {horoscope_type}")
+            return None
+        
+        if sign not in url_map:
             print(f"Invalid sign: {sign}")
             return None
         
-        url = self.BASE_URL + self.ZODIAC_SIGNS[sign]
-        print(f"Scraping {sign.capitalize()}...")
+        url = self.BASE_URL + url_map[sign]
+        print(f"  Scraping {horoscope_type} horoscope for {sign.capitalize()}...")
         
         soup = self.fetch_page(url)
         if not soup:
             return None
         
-        horoscope = self.extract_horoscope(soup, sign)
+        horoscope = extract_func(soup, sign)
         
         # Be respectful - add delay between requests
         time.sleep(self.delay)
         
         return horoscope
     
-    def scrape_all(self) -> List[Dict]:
+    def scrape_all_combined(self) -> Dict:
         """
-        Scrape horoscopes for all zodiac signs
+        Scrape all horoscope types for all signs and combine into single structure
         
         Returns:
-            List of dictionaries containing horoscope data
+            Dictionary with structure: {sign: {daily: {...}, monthly: {...}, yearly: {...}}}
         """
-        horoscopes = []
+        combined = {}
         
-        for sign in self.ZODIAC_SIGNS.keys():
-            horoscope = self.scrape_sign(sign)
-            if horoscope:
-                horoscopes.append(horoscope)
+        signs = list(self.DAILY_URLS.keys())
         
-        return horoscopes
+        for sign in signs:
+            print(f"\n{'='*60}")
+            print(f"Scraping all types for {sign.upper()}")
+            print(f"{'='*60}")
+            
+            combined[sign] = {}
+            
+            # Scrape daily
+            daily = self.scrape_sign(sign, 'daily')
+            if daily:
+                combined[sign]['daily'] = daily
+
+            # Scrape monthly
+            monthly = self.scrape_sign(sign, 'monthly')
+            if monthly:
+                combined[sign]['monthly'] = monthly
+            
+            # Scrape yearly
+            yearly = self.scrape_sign(sign, 'yearly')
+            if yearly:
+                combined[sign]['yearly'] = yearly
+            
+            combined[sign]['scraped_at'] = datetime.now().isoformat()
+        
+        return combined
     
-    def save_to_json(self, horoscopes: List[Dict], filename: str = 'horoscopes.json'):
+    def save_combined_to_json(self, combined_data: Dict, filename: str = 'horoscope.json'):
         """
-        Save horoscopes to JSON file
+        Save combined horoscope data to JSON file
         
         Args:
-            horoscopes: List of horoscope dictionaries
+            combined_data: Dictionary with all horoscope types
             filename: Output filename
         """
         with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(horoscopes, f, indent=2, ensure_ascii=False)
-        print(f"\nSaved {len(horoscopes)} horoscopes to {filename}")
-    
-    def save_to_csv(self, horoscopes: List[Dict], filename: str = 'horoscopes.csv'):
-        """
-        Save horoscopes to CSV file
-        
-        Args:
-            horoscopes: List of horoscope dictionaries
-            filename: Output filename
-        """
-        import csv
-        
-        with open(filename, 'w', newline='', encoding='utf-8') as f:
-            if not horoscopes:
-                return
-            
-            # Get all possible fields
-            fieldnames = ['sign', 'date', 'horoscope', 'creativity', 'love', 'business', 'scraped_at']
-            
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            
-            for h in horoscopes:
-                row = {
-                    'sign': h['sign'],
-                    'date': h['date'],
-                    'horoscope': h['horoscope'],
-                    'scraped_at': h['scraped_at']
-                }
-                # Add ratings if they exist
-                if h.get('ratings'):
-                    row['creativity'] = h['ratings'].get('creativity', '')
-                    row['love'] = h['ratings'].get('love', '')
-                    row['business'] = h['ratings'].get('business', '')
-                
-                writer.writerow(row)
-        
-        print(f"Saved {len(horoscopes)} horoscopes to {filename}")
+            json.dump(combined_data, f, indent=2, ensure_ascii=False)
+        print(f"\n{'='*60}")
+        print(f"[OK] Saved combined horoscopes to {filename}")
+        print(f"{'='*60}")
 
 
 def main():
-    """Main function to demonstrate usage"""
-    print("Cafe Astrology Horoscope Scraper")
-    print("=" * 50)
-    
+    """Main function to scrape all horoscopes and save to horoscope.json"""
+    print("=" * 60)
+    print("Enhanced Cafe Astrology Horoscope Scraper")
+    print("Scraping Daily, Monthly, and Yearly Horoscopes")
+    print("=" * 60)
+
     # Create scraper instance
     scraper = HoroscopeScraper(delay=1.0)
-    
-    # Example 1: Scrape a single sign
-    print("\nExample 1: Scraping single sign (Aries)")
-    aries_horoscope = scraper.scrape_sign('aries')
-    if aries_horoscope:
-        print(f"\nSign: {aries_horoscope['sign']}")
-        print(f"Date: {aries_horoscope['date']}")
-        print(f"Horoscope: {aries_horoscope['horoscope'][:200]}...")
-        if aries_horoscope.get('ratings'):
-            print(f"Ratings: {aries_horoscope['ratings']}")
-    
-    # Example 2: Scrape all signs
-    print("\n" + "=" * 50)
-    print("Example 2: Scraping all signs")
-    print("=" * 50)
-    all_horoscopes = scraper.scrape_all()
-    
-    # Save to files
-    if all_horoscopes:
-        scraper.save_to_json(all_horoscopes, 'horoscopes.json')
-        scraper.save_to_csv(all_horoscopes, 'horoscopes.csv')
-        
-        # Print summary
-        print(f"\nSuccessfully scraped {len(all_horoscopes)} horoscopes")
-        print("\nSummary:")
-        for h in all_horoscopes:
-            print(f"  {h['sign']}: {len(h['horoscope'])} characters")
+
+    # Scrape all types for all signs into single horoscope.json
+    print("\nScraping ALL horoscope types for ALL signs...")
+    print("This will take a few minutes...\n")
+
+    combined_horoscopes = scraper.scrape_all_combined()
+
+    if combined_horoscopes:
+        # Save directly to vite public folder
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(script_dir)
+        output_path = os.path.join(project_root, 'vite-project', 'public', 'horoscope.json')
+        scraper.save_combined_to_json(combined_horoscopes, output_path)
+
+        print(f"\n[OK] Successfully scraped horoscopes for {len(combined_horoscopes)} signs")
+        print(f"[OK] Each sign includes: daily, monthly, and yearly horoscopes")
+        print(f"[OK] Saved to {output_path}")
+    else:
+        print("\n[FAIL] Failed to scrape horoscopes")
 
 
 if __name__ == "__main__":

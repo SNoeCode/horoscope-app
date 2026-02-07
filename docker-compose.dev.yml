@@ -4,7 +4,7 @@ services:
   # Backend API service (Development mode with hot reload)
   backend:
     build:
-      context: .
+      context: ./server
       dockerfile: Dockerfile
     container_name: horoscope-api-dev
     ports:
@@ -14,8 +14,8 @@ services:
       - FLASK_DEBUG=1
       - PYTHONUNBUFFERED=1
     volumes:
-      - ./horoscope.py:/app/horoscope.py
-      - ./api.py:/app/api.py
+      - ./server/horoscope.py:/app/horoscope.py
+      - ./server/api.py:/app/api.py
       - ./cache:/app/cache
     networks:
       - app-network
@@ -33,7 +33,7 @@ services:
       - NODE_ENV=development
       - VITE_API_URL=http://localhost:5000
     volumes:
-      - ./frontend:/app
+      - ./vite-project:/app
       - /app/node_modules
     networks:
       - app-network

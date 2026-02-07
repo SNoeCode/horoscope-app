@@ -1,0 +1,138 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Crimson+Text:wght@400;600;700&family=Roboto+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Merriweather:wght@400;700;800;900&family=Lora:wght@400;600;700&family=Inter:wght@400;600;700;800&family=Oswald:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary, rgba(255, 255, 255, 0.9));
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Apply theme fonts to headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary, inherit);
+  font-weight: var(--heading-weight, 700);
+  letter-spacing: var(--letter-spacing, 0.02em);
+  text-transform: var(--text-transform, none);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Apply theme to paragraphs and body text */
+p, span, div, li, td, th, label {
+  font-family: var(--font-secondary, inherit);
+  letter-spacing: calc(var(--letter-spacing, 0.02em) * 0.5);
+}
+
+/* Buttons and interactive elements */
+button {
+  font-family: var(--font-secondary, inherit);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing, 0.02em);
+  text-transform: var(--text-transform, none);
+}
+
+/* Links */
+a {
+  color: var(--accent, #fbbf24);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover, #f59e0b);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary, rgba(0, 0, 0, 0.2));
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent, #fbbf24);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover, #f59e0b);
+}
+
+/* Selection colors */
+::selection {
+  background: var(--accent, #fbbf24);
+  color: var(--active-text, #1e1b4b);
+}
+
+::-moz-selection {
+  background: var(--accent, #fbbf24);
+  color: var(--active-text, #1e1b4b);
+}
+
+/* Global card styling */
+.card {
+  background: var(--card-bg, rgba(255, 255, 255, 0.1));
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.2));
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  border-color: var(--accent, #fbbf24);
+  box-shadow: 0 8px 30px var(--shadow-color, rgba(0, 0, 0, 0.3));
+}
+
+/* Utility classes for themed elements */
+.text-primary {
+  color: var(--text-primary, rgba(255, 255, 255, 0.9));
+}
+
+.text-secondary {
+  color: var(--text-secondary, rgba(196, 181, 253, 0.9));
+}
+
+.text-accent {
+  color: var(--accent, #fbbf24);
+}
+
+.bg-accent {
+  background: var(--accent-gradient, linear-gradient(45deg, #fbbf24, #f59e0b));
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Prevent transition on page load */
+.preload * {
+  transition: none !important;
+}

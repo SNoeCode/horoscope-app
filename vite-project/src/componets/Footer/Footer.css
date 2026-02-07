@@ -40,7 +40,7 @@
 .footer-title {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  background: linear-gradient(45deg, #ffd700, #ffb347, #ff69b4);
+  background: linear-gradient(45deg, var(--accent), var(--accent-hover), #ff69b4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,14 +50,14 @@
 .footer-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #bdc3c7;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .footer-subtitle {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: #ecf0f1;
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -73,14 +73,14 @@
 }
 
 .footer-links a {
-  color: #bdc3c7;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1rem;
 }
 
 .footer-links a:hover {
-  color: #ffd700;
+  color: var(--accent);
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
   transform: translateY(-2px);
 }
@@ -99,7 +99,7 @@
   transition: all 0.3s ease;
   padding: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
 }
 
@@ -111,7 +111,7 @@
 
 .footer-divider {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ffd700, #ff69b4, #ffd700, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), #ff69b4, var(--accent), transparent);
   margin: 30px auto;
   max-width: 800px;
   border-radius: 2px;
@@ -126,7 +126,7 @@
 }
 
 .footer-copyright {
-  color: #95a5a6;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -135,7 +135,7 @@
   display: block;
   margin-top: 5px;
   font-style: italic;
-  color: #bdc3c7;
+  color: var(--text-secondary);
 }
 
 /* Responsive Design */

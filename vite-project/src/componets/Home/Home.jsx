@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import Horoscope from '../Horoscope/Horoscope'
-
 
 const Home = () => {
-  const [selectedSign, setSelectedSign] = useState(null);
+  const navigate = useNavigate();
 
   const zodiacSigns = [
     { name: 'aries', symbol: '♈', dates: 'Mar 21 - Apr 19' },
@@ -23,7 +22,6 @@ const Home = () => {
 
   return (
     <>
-    <Horoscope/>
     <div className="home-container">
       <div className="home-content">
         <h1 className="hero-title">✨ Cosmic Horoscope ✨</h1>
@@ -34,7 +32,7 @@ const Home = () => {
           {zodiacSigns.map(sign => (
             <button
               key={sign.name}
-              onClick={() => setSelectedSign(sign.name)}
+              onClick={() => navigate(`/horoscope/${sign.name}`)}
               className="zodiac-card"
               title={sign.dates}
               >
@@ -44,9 +42,6 @@ const Home = () => {
             </button>
           ))}
         </div>
-
-        {/* Render Horoscope when a sign is selected */}
-        <Horoscope selectedSign={selectedSign} />
       </div>
     </div>
               </>

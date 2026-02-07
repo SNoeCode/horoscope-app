@@ -2,12 +2,13 @@ import React from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Navbar from "./componets/Navbar/Navbar";
 import Home from "./componets/Home/Home";
-
+import Horoscope from "./componets/Horoscope/Horoscope";
 import Learn from "./componets/Learn/Learn";
 import NumCalculator from "./componets/NumCalculator/NumCalculator";
 import GetSign from "./componets/GetSign/GetSign";
 import Footer from "./componets/Footer/Footer";
 import LifePath from "./componets/LifePath/LifePath";
+import Chart from "./componets/Chart/Chart";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/horoscope" element={<GetSign />} />
+          <Route path="/horoscope/:sign" element={<HoroscopeWrapper />} />
 
           <Route path="/learn" element={<Learn />} />
+          <Route path="/chart" element={<Chart />} />
 
           <Route path="/numerology" element={<NumCalculator />} />
           <Route
@@ -37,6 +40,11 @@ function App() {
     </>
   );
 }
+
+const HoroscopeWrapper = () => {
+  const { sign } = useParams();
+  return <Horoscope selectedSign={sign} />;
+};
 
 const LifePathWrapper = () => {
   const { lifePathNumber } = useParams();

@@ -1,0 +1,346 @@
+/* Learn.css - Learn Page Styles */
+.learn-page {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.learn-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.learn-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  background: linear-gradient(45deg, var(--accent), var(--accent-hover), var(--accent));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  animation: learn-gradient 3s ease-in-out infinite;
+}
+
+@keyframes learn-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.learn-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Layout */
+.learn-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.learn-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.learn-toc {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.learn-toc-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.learn-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.learn-toc-button {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-toc-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: translateX(4px);
+}
+
+.learn-toc-button.active {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15);
+}
+
+.learn-toc-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--text-secondary);
+}
+
+.learn-toc-button.active .learn-toc-icon {
+  color: var(--accent);
+}
+
+.learn-toc-info h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.learn-toc-button.active .learn-toc-info h3 {
+  color: var(--accent);
+}
+
+.learn-toc-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Content Area */
+.learn-content-area {
+  min-height: 400px;
+}
+
+.learn-content-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Chapter Header */
+.learn-chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.learn-chapter-header svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.learn-chapter-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Content Text */
+.learn-text {
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Subsection Toggle */
+.learn-subsection {
+  margin-bottom: 0.75rem;
+}
+
+.learn-subsection-nested {
+  margin-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.learn-subsection-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.learn-subsection-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.learn-subsection-button svg {
+  color: var(--accent);
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.learn-subsection-title {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.learn-subsection-title-nested {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Expanded Content */
+.learn-expanded-content {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Leaf Content */
+.learn-leaf {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.75rem;
+}
+
+.learn-leaf-title {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  text-transform: capitalize;
+}
+
+.learn-leaf-text {
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+/* Welcome State */
+.learn-welcome {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.learn-welcome svg {
+  color: rgba(196, 181, 253, 0.4);
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.learn-welcome h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.learn-welcome p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Loading & Error */
+.learn-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.learn-state-content {
+  text-align: center;
+}
+
+.learn-state-content svg {
+  color: rgba(196, 181, 253, 0.5);
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.learn-state-content p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.learn-error {
+  color: #f87171;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.learn-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .learn-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-sidebar {
+    position: static;
+  }
+
+  .learn-toc {
+    padding: 1rem;
+  }
+
+  .learn-toc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .learn-toc-info p {
+    display: none;
+  }
+
+  .learn-content-card {
+    padding: 1.25rem;
+  }
+
+  .learn-subsection-nested {
+    margin-left: 0.5rem;
+  }
+}

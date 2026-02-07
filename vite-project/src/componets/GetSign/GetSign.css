@@ -9,7 +9,7 @@
 
 .app-header {
   text-align: center;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 30px;
   padding: 40px 20px;
   background: rgba(255, 255, 255, 0.1);
@@ -22,7 +22,7 @@
   font-size: 3rem;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(45deg, #ffd700, #ffb347);
+  background: linear-gradient(45deg, var(--accent), var(--accent-hover));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -82,9 +82,9 @@
 .matched-sign {
   text-align: center;
   padding: 20px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: var(--accent-gradient);
   border-radius: 15px;
-  color: white;
+  color: var(--text-primary);
   margin-top: 20px;
 }
 
@@ -95,7 +95,7 @@
 
 .view-details-btn {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
+  color: var(--text-primary);
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 25px;
@@ -129,14 +129,14 @@
 
 .zodiac-card:hover {
   transform: translateY(-10px) scale(1.05);
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
+  background: var(--accent-gradient);
+  color: var(--text-primary);
 }
 
 .zodiac-card-matched {
-  border: 3px solid #ffd700;
-  background: linear-gradient(45deg, #ffd700, #ffb347);
-  color: white;
+  border: 3px solid var(--accent);
+  background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+  color: var(--text-primary);
   animation: pulse 2s infinite;
 }
 
@@ -184,7 +184,7 @@
 .details-title {
   color: #2c3e50;
   font-size: 2.5rem;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -193,7 +193,7 @@
 
 .close-btn {
   background: #e74c3c;
-  color: white;
+  color: var(--text-primary);
   border: none;
   width: 40px;
   height: 40px;
@@ -245,8 +245,8 @@
 }
 
 .trait-tag {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
+  background: var(--accent-gradient);
+  color: var(--text-primary);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -263,7 +263,7 @@
 
 .career-tag {
   background: #27ae60;
-  color: white;
+  color: var(--text-primary);
   padding: 6px 12px;
   border-radius: 15px;
   font-size: 0.85rem;

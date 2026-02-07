@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 40px 20px;
-  color: white;
+  color: var(--text-primary);
 }
 
 .hub-header {
@@ -46,7 +46,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--card-border);
 }
 
 .numerology-card:hover {
@@ -76,7 +76,7 @@
 .card-button {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  color: var(--text-primary);
   padding: 12px 30px;
   border-radius: 25px;
   font-size: 1.1em;
@@ -97,10 +97,10 @@
   margin: 0 auto;
   text-align: center;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--card-border);
 }
 
 .hub-info h2 {
