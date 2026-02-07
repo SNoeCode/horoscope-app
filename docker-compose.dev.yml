@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Backend API service (Development mode with hot reload)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: horoscope-api-dev
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./horoscope.py:/app/horoscope.py
+      - ./api.py:/app/api.py
+      - ./cache:/app/cache
+    networks:
+      - app-network
+    command: python api.py
+    restart: unless-stopped
+
+  # Frontend React service (Development mode)
+  frontend:
+    image: node:20-alpine
+    container_name: horoscope-frontend-dev
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - app-network
+    command: sh -c "npm install && npm run dev -- --host"
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

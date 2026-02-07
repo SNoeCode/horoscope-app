@@ -222,6 +222,14 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+.horoscope-date {
+  color: rgba(196, 181, 253, 0.9);
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
 .reading-title {
   color: #fbbf24;
   font-size: 1.3rem;
