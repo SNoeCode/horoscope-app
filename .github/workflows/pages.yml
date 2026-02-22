@@ -58,11 +58,11 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
 
     steps:
-      - name: Download artifact
-        uses: actions/download-pages-artifact@v3
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
