@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add vite-project/public/horoscope.json
+          git add vite-project/public/horoscope.json server/horoscopes.json server/daily_horoscopes.json server/monthly_horoscopes.json server/yearly_horoscopes.json
           git diff --cached --quiet || git commit -m "Daily horoscope update"
           git push
 

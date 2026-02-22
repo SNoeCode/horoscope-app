@@ -1,83 +1,121 @@
 #!/usr/bin/env python3
 """
-Scrapes daily, monthly, and yearly horoscopes and converts to frontend JSON format.
-Run this script to update vite-project/public/horoscope.json with fresh data.
+Scrapes daily, monthly, and yearly horoscopes and updates ALL JSON files:
+  - vite-project/public/horoscope.json  (frontend combined format)
+  - server/horoscopes.json              (daily list format)
+  - server/daily_horoscopes.json        (daily list format with type field)
+  - server/monthly_horoscopes.json      (monthly list format)
+  - server/yearly_horoscopes.json       (yearly list format)
 """
 
 import json
 import os
 import sys
 
-# Add parent directory so we can import the scraper
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from server.horoscope import HoroscopeScraper
 
 
+def save_json(path, data):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    print(f"  [OK] Saved {path}")
+
+
 def main():
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    output_path = os.path.join(project_root, 'vite-project', 'public', 'horoscope.json')
+    server_dir = os.path.join(project_root, 'server')
+    public_dir = os.path.join(project_root, 'vite-project', 'public')
 
     print("=" * 60)
     print("Scraping Daily, Monthly, and Yearly Horoscopes")
     print("=" * 60)
 
-    # Create scraper instance
     scraper = HoroscopeScraper(delay=1.0)
-
-    # Scrape all types for all signs
-    combined_horoscopes = {}
     signs = list(scraper.DAILY_URLS.keys())
 
+    # Collect all scraped data
+    combined = {}       # for public/horoscope.json
+    daily_list = []     # for server/daily_horoscopes.json + horoscopes.json
+    monthly_list = []   # for server/monthly_horoscopes.json
+    yearly_list = []    # for server/yearly_horoscopes.json
+
     for sign in signs:
-        print(f"\n{'='*60}")
-        print(f"Scraping all types for {sign.upper()}")
-        print(f"{'='*60}")
+        print(f"\nScraping {sign.upper()}...")
+        combined[sign] = {}
 
-        combined_horoscopes[sign] = {}
-
-        # Scrape daily
-        print(f"  Scraping daily horoscope for {sign.capitalize()}...")
+        # --- Daily ---
         daily = scraper.scrape_sign(sign, 'daily')
         if daily:
-            combined_horoscopes[sign]['daily'] = {
+            combined[sign]['daily'] = {
                 'date': daily.get('date', ''),
                 'summary': daily.get('summary', ''),
                 'ratings': daily.get('ratings', {}),
                 'scraped_at': daily.get('scraped_at', '')
             }
+            daily_list.append({
+                'sign': sign.capitalize(),
+                'type': 'daily',
+                'date': daily.get('date', ''),
+                'horoscope': daily.get('summary', ''),
+                'ratings': daily.get('ratings', {}),
+                'scraped_at': daily.get('scraped_at', '')
+            })
 
-        # Scrape monthly
-        print(f"  Scraping monthly horoscope for {sign.capitalize()}...")
+        # --- Monthly ---
         monthly = scraper.scrape_sign(sign, 'monthly')
         if monthly:
-            combined_horoscopes[sign]['monthly'] = {
+            combined[sign]['monthly'] = {
                 'period': monthly.get('period', ''),
                 'summary': monthly.get('summary', ''),
                 'scraped_at': monthly.get('scraped_at', '')
             }
+            monthly_list.append({
+                'sign': sign.capitalize(),
+                'type': 'monthly',
+                'period': monthly.get('period', ''),
+                'horoscope': monthly.get('summary', ''),
+                'scraped_at': monthly.get('scraped_at', '')
+            })
 
-        # Scrape yearly
-        print(f"  Scraping yearly horoscope for {sign.capitalize()}...")
+        # --- Yearly ---
         yearly = scraper.scrape_sign(sign, 'yearly')
         if yearly:
-            combined_horoscopes[sign]['yearly'] = {
+            combined[sign]['yearly'] = {
                 'year': yearly.get('year', ''),
                 'overview': yearly.get('overview', ''),
                 'summary': yearly.get('summary', ''),
                 'scraped_at': yearly.get('scraped_at', '')
             }
-
-    # Save to JSON
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(combined_horoscopes, f, indent=2, ensure_ascii=False)
+            yearly_list.append({
+                'sign': sign.capitalize(),
+                'type': 'yearly',
+                'year': yearly.get('year', ''),
+                'overview': yearly.get('overview', ''),
+                'horoscope': yearly.get('summary', ''),
+                'scraped_at': yearly.get('scraped_at', '')
+            })
 
     print(f"\n{'='*60}")
-    print(f"Successfully scraped horoscopes for {len(combined_horoscopes)} signs")
-    print(f"Each sign includes: daily, monthly, and yearly horoscopes")
-    print(f"Saved to {output_path}")
-    print(f"{'='*60}")
-    print("\nDone! Horoscopes updated.")
+    print("Saving all JSON files...")
+
+    # Frontend combined JSON
+    save_json(os.path.join(public_dir, 'horoscope.json'), combined)
+
+    # Server list JSONs
+    save_json(os.path.join(server_dir, 'daily_horoscopes.json'), daily_list)
+    save_json(os.path.join(server_dir, 'monthly_horoscopes.json'), monthly_list)
+    save_json(os.path.join(server_dir, 'yearly_horoscopes.json'), yearly_list)
+
+    # horoscopes.json = daily list without the 'type' field (legacy format)
+    horoscopes_legacy = [
+        {k: v for k, v in item.items() if k != 'type'}
+        for item in daily_list
+    ]
+    save_json(os.path.join(server_dir, 'horoscopes.json'), horoscopes_legacy)
+
+    print(f"\nDone! Updated {len(combined)} signs across 5 JSON files.")
 
 
 if __name__ == "__main__":
