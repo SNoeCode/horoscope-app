@@ -12,7 +12,7 @@ const Horoscope = ({ selectedSign }) => {
     const loadHoroscopeData = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/horoscope.json");
+        const res = await fetch(`${import.meta.env.BASE_URL}horoscope.json`);
         if (res.ok) {
           const data = await res.json();
           setHoroscopeData(data);

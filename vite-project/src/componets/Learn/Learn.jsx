@@ -13,7 +13,7 @@ const Learn = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/learn.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}learn.json`);
         if (!response.ok) {
           throw new Error(`Failed to load data: ${response.status}`);
         }
