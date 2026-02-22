@@ -3,19 +3,16 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/horoscope-app/',   // ⭐ REQUIRED FOR GITHUB PAGES
+
   plugins: [react()],
   
   server: {
-    // Required for Docker
     host: '0.0.0.0',
     port: 5173,
-    
-    // Enable hot reload in Docker
     watch: {
       usePolling: true,
     },
-    
-    // Proxy API requests to backend
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
@@ -25,13 +22,10 @@ export default defineConfig({
       }
     }
   },
-  
-  // Build configuration
+
   build: {
     outDir: 'dist',
     sourcemap: true,
-    
-    // Optimize for production
     rollupOptions: {
       output: {
         manualChunks: {
@@ -40,8 +34,7 @@ export default defineConfig({
       }
     }
   },
-  
-  // Preview server configuration (for production testing)
+
   preview: {
     host: '0.0.0.0',
     port: 4173,
